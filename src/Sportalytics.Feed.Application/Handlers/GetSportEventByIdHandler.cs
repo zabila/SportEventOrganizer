@@ -9,6 +9,10 @@ namespace Sportalytics.Feed.Application.Handlers;
 
 internal sealed class GetSportEventByIdHandler(IRepositoryManager repositoryManager, IMapper mapper) : IQueryHandler<GetSportEventByIdQuery, ResponseSportEventDto>
 {
+    private readonly Result<ResponseSportEventDto> _sportEventNotFound = Result.Failure<ResponseSportEventDto>(new Error(
+        "SportEventNotFound",
+        "Sport event not found"
+    ));
 
     public async Task<Result<ResponseSportEventDto>> Handle(GetSportEventByIdQuery request, CancellationToken cancellationToken)
     {
@@ -17,10 +21,7 @@ internal sealed class GetSportEventByIdHandler(IRepositoryManager repositoryMana
         var sportEvent = await sportEventRepository.GetByIdAsync(id);
         if (sportEvent is null)
         {
-            return Result.Failure<ResponseSportEventDto>(new Error(
-                "SportEventNotFound",
-                $"Sport event with id {id} not found"
-            ));
+            return _sportEventNotFound;
         }
 
         var response = mapper.Map<ResponseSportEventDto>(sportEvent);
