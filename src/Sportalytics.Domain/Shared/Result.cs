@@ -6,9 +6,9 @@ public class Result
     {
         switch (isSuccess)
         {
-            case true when error != Error.None:
+            case true when !error.Equals(Error.None):
                 throw new InvalidOperationException();
-            case false when error == Error.None:
+            case false when error.Equals(Error.None):
                 throw new InvalidOperationException();
             default:
                 IsSuccess = isSuccess;
@@ -30,5 +30,5 @@ public class Result
 
     public static Result<TValue> Failure<TValue>(Error error) => new(default, false, error);
 
-    public static Result<TValue> Create<TValue>(TValue? value) => value is not null ? Success(value) : Failure<TValue>(Error.NullValue);
+    protected static Result<TValue> Create<TValue>(TValue? value) => value is not null ? Success(value) : Failure<TValue>(Error.NullValue);
 }
