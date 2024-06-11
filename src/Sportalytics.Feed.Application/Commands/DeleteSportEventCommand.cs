@@ -1,5 +1,4 @@
-﻿using Sportalytics.Feed.Application.Abstractions.Messaging;
-
+﻿using MediatR;
 namespace Sportalytics.Feed.Application.Commands;
 
-public sealed record DeleteSportEventCommand(Guid Id) : ICommand;
+public sealed record DeleteSportEventCommand(Guid Id) : IRequest;

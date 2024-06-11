@@ -12,7 +12,7 @@ public class UnitOfWork(RepositoryContext context) : IUnitOfWork
         return await _context.SaveChangesAsync();
     }
 
-    public IDbContextTransaction GetTransaction()
+    public IDbContextTransaction BeginTransaction()
     {
         return _context.Database.BeginTransaction();
     }

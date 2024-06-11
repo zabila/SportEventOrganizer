@@ -1,8 +1,8 @@
-﻿using Sportalytics.Feed.Application.Abstractions.Messaging;
+﻿using MediatR;
 using Sportalytics.Feed.Application.DTOs;
 
 namespace Sportalytics.Feed.Application.Queries;
 
-public sealed record GetSportEventByIdQuery(Guid SportId, CancellationToken CancellationToken) : IQuery<ResponseSportEventDto>
+public sealed record GetSportEventByIdQuery(Guid SportId, CancellationToken CancellationToken) : IRequest<ResponseSportEventDto>
 {
 }

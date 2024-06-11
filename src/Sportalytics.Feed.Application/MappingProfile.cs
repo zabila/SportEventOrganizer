@@ -8,7 +8,7 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
-        CreateMap<CreateSpotEventDto, SportEvent>();
+        CreateMap<CreateSportEventDto, SportEvent>();
         CreateMap<SportEvent, ResponseSportEventDto>();
         CreateMap<UpdateSpotEventDto, SportEvent>();
     }

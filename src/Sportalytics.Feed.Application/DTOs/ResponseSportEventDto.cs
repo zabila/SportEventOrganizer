@@ -1,7 +1,8 @@
-﻿namespace Sportalytics.Feed.Application.DTOs;
+﻿using Sportalytics.Feed.Application.DTOs.Abstractions;
 
-public sealed record ResponseSportEventDto(
-    Guid Id,
-    string? Name,
-    string? Location,
-    DateTime Date);
+namespace Sportalytics.Feed.Application.DTOs;
+
+public sealed record ResponseSportEventDto : SportEventDtoBase
+{
+    public Guid Id { get; init; }
+};
