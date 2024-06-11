@@ -1,6 +1,6 @@
 ﻿namespace Sportalytics.Feed.Application.DTOs;
 
-public sealed record ResponseSpotEventDto(
+public sealed record ResponseSportEventDto(
     Guid Id,
     string? Name,
     string? Location,

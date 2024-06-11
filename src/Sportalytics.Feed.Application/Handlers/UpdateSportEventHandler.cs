@@ -14,10 +14,10 @@ internal sealed class UpdateSportEventHandler(IRepositoryManager repository, IUn
     {
         var guid = request.Guid;
         var sportEventDto = request.UpdateSpotEventDto;
-        var sportEvent = mapper.Map<SportEvent>(sportEventDto);
         
         var sportEventRepository = repository.SportEvents;
-        await sportEventRepository.UpdateAsync(guid, sportEvent);
+        var sportEventEntity = await sportEventRepository.GetByIdAsync(guid);
+        mapper.Map(sportEventDto, sportEventEntity);
         await unitOfWork.SaveChangesAsync();
 
         return Result.Success();
