@@ -10,5 +10,6 @@ public class MappingProfile : Profile
     {
         CreateMap<CreateSpotEventDto, SportEvent>();
         CreateMap<SportEvent, ResponseSpotEventDto>();
+        CreateMap<List<SportEvent>, List<ResponseSpotEventDto>>();
     }
 }

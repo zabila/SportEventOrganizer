@@ -25,4 +25,28 @@ public sealed class FeedController(ISender sender) : ControllerBase
         var result = await sender.Send(command, cancellationToken);
         return result.IsSuccess ? Ok(result.Value) : NotFound(result.Error);
     }
+    
+    [HttpGet]
+    public async Task<IActionResult> GetSportEvents(CancellationToken cancellationToken)
+    {
+        var command = new GetSportEventsQuery(cancellationToken);
+        var result = await sender.Send(command, cancellationToken);
+        return result.IsSuccess ? Ok(result.Value) : NotFound(result.Error);
+    }
+    
+    [HttpPut("{id:guid}")]
+    public async Task<IActionResult> UpdateSportEvent(Guid id, [FromBody] UpdateSpotEventDto updateSportEventDto, CancellationToken cancellationToken)
+    {
+        var command = new UpdateSportEventCommand(id, updateSportEventDto, cancellationToken);
+        var result = await sender.Send(command, cancellationToken);
+        return result.IsSuccess ? Ok() : BadRequest(result.Error);
+    }
+    
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> DeleteSportEvent(Guid id, CancellationToken cancellationToken)
+    {
+        var command = new DeleteSportEventCommand(id);
+        var result = await sender.Send(command, cancellationToken);
+        return result.IsSuccess ? Ok() : BadRequest(result.Error);
+    }
 }
