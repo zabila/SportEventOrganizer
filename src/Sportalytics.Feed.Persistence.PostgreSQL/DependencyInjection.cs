@@ -12,7 +12,7 @@ public static class DependencyInjection
     {
         services.AddDbContext<FeedServiceContext>(opts =>
             opts.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
-
+        
         services.AddScoped<IRepositoryManager, RepositoryManager>();
 
         return services;
