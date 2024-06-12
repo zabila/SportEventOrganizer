@@ -1,4 +1,4 @@
-﻿namespace Sportalytics.Feed.Persistence.Filters;
+﻿namespace Sportalytics.Feed.Persistence.PostgreSQL.Filters;
 
 public record SportEventFilter
 {

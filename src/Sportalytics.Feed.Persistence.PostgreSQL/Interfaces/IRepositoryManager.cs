@@ -1,7 +1,7 @@
 ﻿using Sportalytics.Feed.Domain.Entities;
-using Sportalytics.Feed.Persistence.Filters;
+using Sportalytics.Feed.Persistence.PostgreSQL.Filters;
 
-namespace Sportalytics.Feed.Persistence.Interfaces;
+namespace Sportalytics.Feed.Persistence.PostgreSQL.Interfaces;
 
 public interface IRepositoryManager : IUnitOfWork
 {

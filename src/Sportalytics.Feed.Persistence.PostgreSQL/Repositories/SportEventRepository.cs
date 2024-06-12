@@ -1,8 +1,8 @@
 ﻿using Sportalytics.Feed.Domain.Entities;
-using Sportalytics.Feed.Persistence.Core;
-using Sportalytics.Feed.Persistence.Filters;
+using Sportalytics.Feed.Persistence.PostgreSQL.Core;
+using Sportalytics.Feed.Persistence.PostgreSQL.Filters;
 
-namespace Sportalytics.Feed.Persistence.Repositories;
+namespace Sportalytics.Feed.Persistence.PostgreSQL.Repositories;
 
 public class SportEventRepository(FeedServiceContext feedServiceContext) : RepositoryBase<SportEvent, SportEventFilter>(feedServiceContext)
 {

@@ -1,6 +1,6 @@
 using Sportalytics.Feed.API.Extensions;
 using Sportalytics.Feed.Application;
-using Sportalytics.Feed.Persistence;
+using Sportalytics.Feed.Persistence.PostgreSQL;
 
 var builder = WebApplication.CreateBuilder(args);
 

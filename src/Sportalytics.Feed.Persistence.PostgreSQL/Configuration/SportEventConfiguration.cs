@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Sportalytics.Feed.Domain.Entities;
 
-namespace Sportalytics.Feed.Persistence.Configuration;
+namespace Sportalytics.Feed.Persistence.PostgreSQL.Configuration;
 
 public class SportEventConfiguration : IEntityTypeConfiguration<SportEvent>
 {

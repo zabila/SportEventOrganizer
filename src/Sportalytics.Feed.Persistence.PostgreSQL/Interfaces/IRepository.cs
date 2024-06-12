@@ -1,4 +1,4 @@
-﻿namespace Sportalytics.Feed.Persistence.Interfaces;
+﻿namespace Sportalytics.Feed.Persistence.PostgreSQL.Interfaces;
 
 public interface IRepository<T, in TFilter>
 {

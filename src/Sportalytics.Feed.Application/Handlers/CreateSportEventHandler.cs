@@ -2,7 +2,7 @@
 using MediatR;
 using Sportalytics.Feed.Domain.Entities;
 using Sportalytics.Feed.Application.Commands;
-using Sportalytics.Feed.Persistence.Interfaces;
+using Sportalytics.Feed.Persistence.PostgreSQL.Interfaces;
 
 namespace Sportalytics.Feed.Application.Handlers;
 

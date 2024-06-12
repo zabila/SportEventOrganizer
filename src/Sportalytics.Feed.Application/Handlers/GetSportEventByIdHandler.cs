@@ -4,8 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Sportalytics.Feed.Application.DTOs;
 using Sportalytics.Feed.Application.Queries;
 using Sportalytics.Feed.Domain.Exceptions;
-using Sportalytics.Feed.Persistence.Filters;
-using Sportalytics.Feed.Persistence.Interfaces;
+using Sportalytics.Feed.Persistence.PostgreSQL.Filters;
+using Sportalytics.Feed.Persistence.PostgreSQL.Interfaces;
 
 namespace Sportalytics.Feed.Application.Handlers;
 

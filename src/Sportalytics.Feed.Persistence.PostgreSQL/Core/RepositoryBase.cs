@@ -1,6 +1,6 @@
-﻿using Sportalytics.Feed.Persistence.Interfaces;
+﻿using Sportalytics.Feed.Persistence.PostgreSQL.Interfaces;
 
-namespace Sportalytics.Feed.Persistence.Core;
+namespace Sportalytics.Feed.Persistence.PostgreSQL.Core;
 
 public abstract class RepositoryBase<T, TFilter>(FeedServiceContext feedServiceContext) : IRepository<T, TFilter>
     where T : class

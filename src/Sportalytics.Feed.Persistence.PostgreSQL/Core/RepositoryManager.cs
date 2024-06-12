@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
 using Sportalytics.Feed.Domain.Entities;
-using Sportalytics.Feed.Persistence.Filters;
-using Sportalytics.Feed.Persistence.Interfaces;
-using Sportalytics.Feed.Persistence.Repositories;
+using Sportalytics.Feed.Persistence.PostgreSQL.Filters;
+using Sportalytics.Feed.Persistence.PostgreSQL.Interfaces;
+using Sportalytics.Feed.Persistence.PostgreSQL.Repositories;
 
-namespace Sportalytics.Feed.Persistence.Core;
+namespace Sportalytics.Feed.Persistence.PostgreSQL.Core;
 
 public sealed class RepositoryManager(FeedServiceContext feedServiceContext) : IRepositoryManager
 {

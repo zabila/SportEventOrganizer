@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Sportalytics.Feed.Persistence.Migrations
+namespace Sportalytics.Feed.Persistence.PostgreSQL.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration
