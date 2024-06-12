@@ -3,6 +3,7 @@ using MediatR;
 using Sportalytics.Feed.Domain.Entities;
 using Sportalytics.Feed.Application.Commands;
 using Sportalytics.Feed.Application.Interfaces;
+using Sportalytics.Feed.Persistence.Interfaces;
 
 namespace Sportalytics.Feed.Application.Handlers;
 

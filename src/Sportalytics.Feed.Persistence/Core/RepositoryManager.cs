@@ -1,11 +1,14 @@
 ﻿using Sportalytics.Feed.Application.Interfaces;
+using Sportalytics.Feed.Domain.Entities;
+using Sportalytics.Feed.Persistence.Filters;
+using Sportalytics.Feed.Persistence.Interfaces;
 using Sportalytics.Feed.Persistence.Repositories;
 
 namespace Sportalytics.Feed.Persistence.Core;
 
-public sealed class RepositoryManager(RepositoryContext repositoryContext) : IRepositoryManager
+public sealed class RepositoryManager(FeedServiceContext feedServiceContext) : IRepositoryManager
 {
-    private readonly Lazy<ISportEventRepository> _sportEvents = new(() => new SportEventRepository(repositoryContext));
+    private readonly Lazy<IRepository<SportEvent, SportEventFilter>> _sportEvents = new(() => new SportEventRepository(feedServiceContext));
 
-    public ISportEventRepository SportEvents => _sportEvents.Value;
+    public IRepository<SportEvent, SportEventFilter> SportEvents => _sportEvents.Value;
 }

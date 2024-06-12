@@ -6,9 +6,9 @@ using Sportalytics.Feed.Application.Queries;
 
 namespace Sportalytics.Feed.Presentation.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/sport-events")]
 [ApiController]
-public sealed class FeedController(ISender sender) : ControllerBase
+public sealed class SportEventController(ISender sender) : ControllerBase
 {
     [HttpPost]
     public async Task<IActionResult> CreateSportEvent([FromBody] CreateSportEventDto createSportEventDto, CancellationToken cancellationToken)

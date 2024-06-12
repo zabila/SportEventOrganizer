@@ -4,7 +4,7 @@ using Sportalytics.Feed.Persistence.Configuration;
 
 namespace Sportalytics.Feed.Persistence.Core;
 
-public class RepositoryContext(DbContextOptions options) : DbContext(options)
+public class FeedServiceContext(DbContextOptions options) : DbContext(options)
 {
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -14,5 +14,5 @@ public class RepositoryContext(DbContextOptions options) : DbContext(options)
         modelBuilder.ApplyConfiguration(new SportEventConfiguration());
     }
 
-    public DbSet<SportEvent>? SportEvents { get; set; }
+    public DbSet<SportEvent> SportEvents { get; set; }
 }

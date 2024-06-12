@@ -1,35 +1,28 @@
 ﻿using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using Sportalytics.Feed.Application.Interfaces;
+using Sportalytics.Feed.Persistence.Interfaces;
 
 namespace Sportalytics.Feed.Persistence.Core;
 
-public class RepositoryBase<T>(RepositoryContext repositoryContext) : IRepositoryBase<T> where T : class
+public abstract class RepositoryBase<T, TFilter>(FeedServiceContext feedServiceContext) : IRepository<T, TFilter>
+    where T : class
+    where TFilter : class
 {
-    public IQueryable<T> FindAll()
-    {
-        return repositoryContext.Set<T>();
-    }
-
-    public Task<T?> FindByCondition(Expression<Func<T, bool>> expression)
-    {
-        return repositoryContext.Set<T>().FirstOrDefaultAsync(expression)!;
-    }
+    public abstract IQueryable<T> Query(TFilter filter);
 
     public async Task AddAsync(T entity, CancellationToken cancellationToken)
     {
-        await repositoryContext.Set<T>().AddAsync(entity, cancellationToken);
+        await feedServiceContext.Set<T>().AddAsync(entity, cancellationToken);
     }
 
-    public Task UpdateAsync(T entity)
+    public void Update(T entity)
     {
-        repositoryContext.Set<T>().Update(entity);
-        return Task.CompletedTask;
+        feedServiceContext.Set<T>().Update(entity);
     }
 
-    public Task DeleteAsync(T entity)
+    public void Delete(T entity)
     {
-        repositoryContext.Set<T>().Remove(entity);
-        return Task.CompletedTask;
+        feedServiceContext.Set<T>().Remove(entity);
     }
 }

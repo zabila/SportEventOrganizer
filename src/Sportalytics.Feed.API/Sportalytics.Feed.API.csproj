@@ -15,19 +15,20 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.6"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.6"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.6">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0"/>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Sportalytics.Feed.Application\Sportalytics.Feed.Application.csproj" />
-        <ProjectReference Include="..\Sportalytics.Feed.Infrastructure\Sportalytics.Feed.Infrastructure.csproj" />
-        <ProjectReference Include="..\Sportalytics.Feed.Persistence\Sportalytics.Feed.Persistence.csproj" />
-        <ProjectReference Include="..\Sportalytics.Feed.Presentation\Sportalytics.Feed.Presentation.csproj" />
+        <ProjectReference Include="..\Sportalytics.Feed.Application\Sportalytics.Feed.Application.csproj"/>
+        <ProjectReference Include="..\Sportalytics.Feed.Infrastructure\Sportalytics.Feed.Infrastructure.csproj"/>
+        <ProjectReference Include="..\Sportalytics.Feed.Persistence\Sportalytics.Feed.Persistence.csproj"/>
+        <ProjectReference Include="..\Sportalytics.Feed.Presentation\Sportalytics.Feed.Presentation.csproj"/>
     </ItemGroup>
 
 </Project>

@@ -3,9 +3,9 @@ using Sportalytics.Feed.Application.Interfaces;
 
 namespace Sportalytics.Feed.Persistence.Core;
 
-public class UnitOfWork(RepositoryContext context) : IUnitOfWork
+public class UnitOfWork(FeedServiceContext context) : IUnitOfWork
 {
-    private readonly RepositoryContext _context = context ?? throw new ArgumentNullException(nameof(context));
+    private readonly FeedServiceContext _context = context ?? throw new ArgumentNullException(nameof(context));
 
     public async Task<int> SaveChangesAsync()
     {

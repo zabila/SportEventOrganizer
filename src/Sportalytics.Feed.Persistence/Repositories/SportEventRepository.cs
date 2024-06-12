@@ -2,30 +2,22 @@
 using Sportalytics.Feed.Application.Interfaces;
 using Sportalytics.Feed.Domain.Entities;
 using Sportalytics.Feed.Persistence.Core;
+using Sportalytics.Feed.Persistence.Filters;
 
 namespace Sportalytics.Feed.Persistence.Repositories;
 
-public class SportEventRepository(RepositoryContext repositoryContext) : RepositoryBase<SportEvent>(repositoryContext), ISportEventRepository
+public class SportEventRepository(FeedServiceContext feedServiceContext) : RepositoryBase<SportEvent, SportEventFilter>(feedServiceContext)
 {
-    public Task<SportEvent?> GetByIdAsync(Guid id)
-    {
-        return FindByCondition(sportEvent => sportEvent.Id == id);
-    }
+    private readonly FeedServiceContext _feedServiceContext = feedServiceContext;
 
-    public async Task<List<SportEvent>> GetAllAsync()
+    public override IQueryable<SportEvent> Query(SportEventFilter filter)
     {
-        return await FindAll().ToListAsync();
-    }
+        IQueryable<SportEvent> query = _feedServiceContext.SportEvents;
+        if (filter.Ids != null && filter.Ids.Count != 0)
+        {
+            query = query.Where(x => filter.Ids.Contains(x.Id));
+        }
 
-    public async Task UpdateAsync(Guid id, SportEvent sportEvent)
-    {
-        await UpdateAsync(sportEvent);
-    }
-
-    public async Task DeleteByGuidAsync(Guid id)
-    {
-         var sportEvent = await GetByIdAsync(id);
-         //NOTE: Pay attention. I'm not sure if this is the correct way to handle this.
-         await DeleteAsync(sportEvent!);
+        return query;
     }
 }

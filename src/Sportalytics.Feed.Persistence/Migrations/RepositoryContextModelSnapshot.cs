@@ -10,7 +10,7 @@ using Sportalytics.Feed.Persistence.Core;
 
 namespace Sportalytics.Feed.Persistence.Migrations
 {
-    [DbContext(typeof(RepositoryContext))]
+    [DbContext(typeof(FeedServiceContext))]
     partial class RepositoryContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

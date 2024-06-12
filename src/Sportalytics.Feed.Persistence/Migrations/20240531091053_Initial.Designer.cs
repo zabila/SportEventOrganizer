@@ -11,7 +11,7 @@ using Sportalytics.Feed.Persistence.Core;
 
 namespace Sportalytics.Feed.Persistence.Migrations
 {
-    [DbContext(typeof(RepositoryContext))]
+    [DbContext(typeof(FeedServiceContext))]
     [Migration("20240531091053_Initial")]
     partial class Initial
     {
