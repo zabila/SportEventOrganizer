@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Sportalytics.Feed.Application.Interfaces;
-using Sportalytics.Feed.Domain.Entities;
+﻿using Sportalytics.Feed.Domain.Entities;
 using Sportalytics.Feed.Persistence.Core;
 using Sportalytics.Feed.Persistence.Filters;
 

@@ -1,20 +1,19 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Sportalytics.Feed.Application.Commands;
-using Sportalytics.Feed.Application.Interfaces;
 using Sportalytics.Feed.Domain.Exceptions;
 using Sportalytics.Feed.Persistence.Filters;
 using Sportalytics.Feed.Persistence.Interfaces;
 
 namespace Sportalytics.Feed.Application.Handlers;
 
-internal sealed class DeleteSportEventHandler(IRepositoryManager repository, IUnitOfWork unitOfWork) : IRequestHandler<DeleteSportEventCommand>
+internal sealed class DeleteSportEventHandler(IRepositoryManager repositoryManager) : IRequestHandler<DeleteSportEventCommand>
 {
 
     public async Task Handle(DeleteSportEventCommand request, CancellationToken cancellationToken)
     {
         var id = request.Id;
-        var sportEventRepository = repository.SportEvents;
+        var sportEventRepository = repositoryManager.SportEvents;
 
         var sportEventFilter = new SportEventFilter
         {
@@ -26,12 +25,12 @@ internal sealed class DeleteSportEventHandler(IRepositoryManager repository, IUn
 
         var sportEventQuery = sportEventRepository.Query(sportEventFilter);
         var sportEvent = await sportEventQuery.FirstOrDefaultAsync(cancellationToken);
-        if (sportEvent == null)
+        if (sportEvent is null)
         {
             throw new SportEventNotFoundException(id);
         }
 
         sportEventRepository.Delete(sportEvent);
-        await unitOfWork.SaveChangesAsync();
+        await repositoryManager.SaveChangesAsync();
     }
 }

@@ -1,7 +1,4 @@
-﻿using System.Linq.Expressions;
-using Microsoft.EntityFrameworkCore;
-using Sportalytics.Feed.Application.Interfaces;
-using Sportalytics.Feed.Persistence.Interfaces;
+﻿using Sportalytics.Feed.Persistence.Interfaces;
 
 namespace Sportalytics.Feed.Persistence.Core;
 

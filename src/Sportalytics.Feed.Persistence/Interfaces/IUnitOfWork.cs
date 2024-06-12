@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
 
-namespace Sportalytics.Feed.Application.Interfaces;
+namespace Sportalytics.Feed.Persistence.Interfaces;
 
 public interface IUnitOfWork
 {

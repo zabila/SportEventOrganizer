@@ -27,7 +27,7 @@ internal sealed class GetSportEventByIdHandler(IRepositoryManager repositoryMana
 
         var sportEventQuery = sportEventRepository.Query(sportEventFilter);
         var sportEvent = await sportEventQuery.FirstOrDefaultAsync(cancellationToken);
-        if (sportEvent == null)
+        if (sportEvent is null)
         {
             throw new SportEventNotFoundException(id);
         }
