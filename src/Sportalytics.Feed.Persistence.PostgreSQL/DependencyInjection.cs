@@ -8,11 +8,11 @@ namespace Sportalytics.Feed.Persistence.PostgreSQL;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddPostgreSQL(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<FeedServiceContext>(opts =>
             opts.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
-        
+
         services.AddScoped<IRepositoryManager, RepositoryManager>();
 
         return services;

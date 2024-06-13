@@ -1,36 +1,23 @@
 ﻿using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Sportalytics.Feed.Application.Commands;
+using Sportalytics.Feed.Domain.Entities;
 using Sportalytics.Feed.Domain.Exceptions;
-using Sportalytics.Feed.Persistence.PostgreSQL.Filters;
-using Sportalytics.Feed.Persistence.PostgreSQL.Interfaces;
+using Sportalytics.Feed.Persistence.MongoDB.Interfaces;
 
 namespace Sportalytics.Feed.Application.Handlers;
 
-internal sealed class DeleteSportEventHandler(IRepositoryManager repositoryManager) : IRequestHandler<DeleteSportEventCommand>
+internal sealed class DeleteSportEventHandler(IRepository<SportEvent> repository) : IRequestHandler<DeleteSportEventCommand>
 {
 
     public async Task Handle(DeleteSportEventCommand request, CancellationToken cancellationToken)
     {
         var id = request.Id;
-        var sportEventRepository = repositoryManager.SportEvents;
-
-        var sportEventFilter = new SportEventFilter
-        {
-            Ids = new[]
-            {
-                id
-            }
-        };
-
-        var sportEventQuery = sportEventRepository.Query(sportEventFilter);
-        var sportEvent = await sportEventQuery.FirstOrDefaultAsync(cancellationToken);
-        if (sportEvent is null)
+        var sportEventQuery = await repository.QueryAsync(es => es.Id == id, cancellationToken);
+        var sportEvent = sportEventQuery.FirstOrDefault();
+        if (sportEvent == null)
         {
             throw new SportEventNotFoundException(id);
         }
-
-        sportEventRepository.Delete(sportEvent);
-        await repositoryManager.SaveChangesAsync();
+        await repository.DeleteAsync(sportEvent, cancellationToken);
     }
 }

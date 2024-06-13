@@ -3,6 +3,6 @@ using Sportalytics.Feed.Application.DTOs;
 
 namespace Sportalytics.Feed.Application.Queries;
 
-public sealed record GetSportEventByIdQuery(Guid SportId, CancellationToken CancellationToken) : IRequest<ResponseSportEventDto>
+public sealed record GetSportEventByIdQuery(Guid Id, CancellationToken CancellationToken) : IRequest<ResponseSportEventDto>
 {
 }

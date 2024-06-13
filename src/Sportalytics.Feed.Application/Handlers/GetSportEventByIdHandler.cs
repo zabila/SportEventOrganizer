@@ -1,33 +1,21 @@
 ﻿using AutoMapper;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Sportalytics.Feed.Application.DTOs;
 using Sportalytics.Feed.Application.Queries;
+using Sportalytics.Feed.Domain.Entities;
 using Sportalytics.Feed.Domain.Exceptions;
-using Sportalytics.Feed.Persistence.PostgreSQL.Filters;
-using Sportalytics.Feed.Persistence.PostgreSQL.Interfaces;
+using Sportalytics.Feed.Persistence.MongoDB.Interfaces;
 
 namespace Sportalytics.Feed.Application.Handlers;
 
-internal sealed class GetSportEventByIdHandler(IRepositoryManager repositoryManager, IMapper mapper) : IRequestHandler<GetSportEventByIdQuery, ResponseSportEventDto>
+internal sealed class GetSportEventByIdHandler(IRepository<SportEvent> repository, IMapper mapper) : IRequestHandler<GetSportEventByIdQuery, ResponseSportEventDto>
 {
     public async Task<ResponseSportEventDto> Handle(GetSportEventByIdQuery request, CancellationToken cancellationToken)
     {
-        var id = request.SportId;
-        var sportEventRepository = repositoryManager.SportEvents;
-
-
-        var sportEventFilter = new SportEventFilter
-        {
-            Ids = new[]
-            {
-                id
-            }
-        };
-
-        var sportEventQuery = sportEventRepository.Query(sportEventFilter);
-        var sportEvent = await sportEventQuery.FirstOrDefaultAsync(cancellationToken);
-        if (sportEvent is null)
+        var id = request.Id;
+        var sportEventQuery = await repository.QueryAsync(es => es.Id == id, cancellationToken);
+        var sportEvent = sportEventQuery.FirstOrDefault();
+        if (sportEvent == null)
         {
             throw new SportEventNotFoundException(id);
         }
