@@ -12,8 +12,8 @@ internal sealed class GetSportEventsHandler(IRepository<SportEvent> repository, 
 {
     public async Task<List<ResponseSportEventDto>> Handle(GetSportEventsQuery request, CancellationToken cancellationToken)
     {
-        var sportEventQuery = await repository.QueryAsync(_ => true, cancellationToken);
-        var sportEvents = sportEventQuery.ToList();
+        var sportEventQuery = repository.Query(_ => true);
+        var sportEvents = await sportEventQuery.ToListAsync(cancellationToken);
         var response = mapper.Map<List<ResponseSportEventDto>>(sportEvents);
         return response;
     }

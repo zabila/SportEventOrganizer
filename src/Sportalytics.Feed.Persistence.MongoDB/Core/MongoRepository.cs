@@ -10,10 +10,10 @@ public class MongoRepository<T>(IMongoDatabase database, string collectionName) 
     private readonly IMongoCollection<T> _collection = database.GetCollection<T>(collectionName);
     private readonly FilterDefinitionBuilder<T> _filterDefinitionBuilder = Builders<T>.Filter;
 
-    public async Task<IQueryable<T>> QueryAsync(Expression<Func<T, bool>> filter, CancellationToken cancellationToken)
+    public IQueryable<T> Query(Expression<Func<T, bool>> filter)
     {
-        var foundList = await _collection.Find(filter).ToListAsync(cancellationToken);
-        return foundList.AsQueryable();
+        var foundList = _collection.AsQueryable().Where(filter);
+        return foundList;
     }
 
     public async Task AddAsync(T entity, CancellationToken cancellationToken)

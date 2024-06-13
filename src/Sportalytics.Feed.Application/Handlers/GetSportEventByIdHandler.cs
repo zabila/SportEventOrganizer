@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Sportalytics.Feed.Application.DTOs;
 using Sportalytics.Feed.Application.Queries;
 using Sportalytics.Feed.Domain.Entities;
@@ -13,8 +14,8 @@ internal sealed class GetSportEventByIdHandler(IRepository<SportEvent> repositor
     public async Task<ResponseSportEventDto> Handle(GetSportEventByIdQuery request, CancellationToken cancellationToken)
     {
         var id = request.Id;
-        var sportEventQuery = await repository.QueryAsync(es => es.Id == id, cancellationToken);
-        var sportEvent = sportEventQuery.FirstOrDefault();
+        var sportEventQuery = repository.Query(es => es.Id == id);
+        var sportEvent = await sportEventQuery.FirstOrDefaultAsync(cancellationToken);
         if (sportEvent == null)
         {
             throw new SportEventNotFoundException(id);
