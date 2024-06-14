@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Sportalytics.Event.Infrastructure.Interfaces;
 using Sportalytics.Event.Infrastructure.Services.ApiSportsService;
 
 namespace Sportalytics.Event.Infrastructure;
@@ -15,7 +16,9 @@ public static class DependencyInjection
         services.Configure<ApiSportsServiceSettings>(configuration.GetSection(nameof(ApiSportsServiceSettings)));
 
         services.AddHttpClient();
-        services.AddHostedService<BackgroundApiSportsService>();
+        services.AddHostedService<ScopedBackgroundApiSportService>();
+        services.AddScoped<IScopedApiSportService, ScopedApiSportService>();
+
         return services;
     }
 }

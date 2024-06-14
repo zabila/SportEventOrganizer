@@ -1,38 +1,41 @@
 ﻿using System.Net.Http.Headers;
 using System.Text.Json;
 using MediatR;
-using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Sportalytics.Event.Application.Commands;
 using Sportalytics.Event.Application.DTOs;
 using Sportalytics.Event.Domain.Entities;
+using Sportalytics.Event.Infrastructure.Interfaces;
 
 namespace Sportalytics.Event.Infrastructure.Services.ApiSportsService;
 
-public class BackgroundApiSportsService : BackgroundService
+public class ScopedApiSportService : IScopedApiSportService
 {
     private readonly ISender _sender;
+    private readonly IServiceScopeFactory _serviceScopeFactory;
     private readonly IHttpClientFactory _clientFactory;
     private readonly ApiSportsServiceSettings _apiSportsServiceSettings;
 
     private readonly TimeSpan _timeToNextRun;
     private readonly TimeSpan _timeForRetry;
 
-    public BackgroundApiSportsService(IHttpClientFactory clientFactory, ISender sender, IOptions<ApiSportsServiceSettings> serviceSettings)
+    public ScopedApiSportService(IHttpClientFactory clientFactory, ISender sender, IOptions<ApiSportsServiceSettings> serviceSettings, IServiceScopeFactory serviceScopeFactory)
     {
         _clientFactory = clientFactory;
         _sender = sender;
+        _serviceScopeFactory = serviceScopeFactory;
         _apiSportsServiceSettings = serviceSettings.Value;
         _timeToNextRun = _apiSportsServiceSettings.TimeToNextRun;
         _timeForRetry = _apiSportsServiceSettings.TimeForRetry;
     }
 
-    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    public async Task DoWorkAsync(CancellationToken stoppingToken)
     {
         var client = CreateClient();
         while (!stoppingToken.IsCancellationRequested)
         {
-            var result = await DoRequest(client, stoppingToken);
+            var result = await SendRequestAsync(client, stoppingToken);
             if (result is null)
             {
                 Console.WriteLine("Failed to get data from the API. Retrying in 10 seconds.");
@@ -58,7 +61,7 @@ public class BackgroundApiSportsService : BackgroundService
         }
     }
 
-    private async Task<JsonDocument?> DoRequest(HttpClient client, CancellationToken stoppingToken)
+    private async Task<JsonDocument?> SendRequestAsync(HttpClient client, CancellationToken stoppingToken)
     {
         var baseUrl = _apiSportsServiceSettings.BaseUrl;
         ArgumentException.ThrowIfNullOrEmpty(baseUrl);
