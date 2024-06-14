@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .AddPresentation()
     .AddApplication()
-    .AddPostgreSQL(builder.Configuration)
+    .AddPostgreSql(builder.Configuration)
     .AddMongo(builder.Configuration);
 
 var app = builder.Build();

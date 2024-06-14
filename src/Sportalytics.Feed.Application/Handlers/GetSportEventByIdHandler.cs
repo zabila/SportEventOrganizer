@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
+using MongoDB.Driver;
 using Sportalytics.Feed.Application.DTOs;
 using Sportalytics.Feed.Application.Extensions;
 using Sportalytics.Feed.Application.Queries;

@@ -21,6 +21,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FeedService", "FeedService"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sportalytics.Feed.Persistence.MongoDB", "src\Sportalytics.Feed.Persistence.MongoDB\Sportalytics.Feed.Persistence.MongoDB.csproj", "{362F6920-259B-4FE5-8F07-164D07D9B221}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventService", "EventService", "{FE583965-74DC-4FF4-AA7E-EAB2159CCC4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sportalytics.Event.API", "src\Sportalytics.Event.API\Sportalytics.Event.API.csproj", "{00677269-C039-4F10-84B7-95A0543926FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sportalytics.Event.Application", "src\Sportalytics.Event.Application\Sportalytics.Event.Application.csproj", "{7675FAF6-A007-42DD-8E2A-D58AD96024CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sportalytics.Event.Domain", "src\Sportalytics.Event.Domain\Sportalytics.Event.Domain.csproj", "{337203D9-0B73-4D71-B9F5-5FA1EAB41B70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sportalytics.Event.Infrastructure", "src\Sportalytics.Event.Infrastructure\Sportalytics.Event.Infrastructure.csproj", "{6D091DAF-D263-481E-9361-FADB3D75BB14}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +65,22 @@ Global
 		{362F6920-259B-4FE5-8F07-164D07D9B221}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{362F6920-259B-4FE5-8F07-164D07D9B221}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{362F6920-259B-4FE5-8F07-164D07D9B221}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00677269-C039-4F10-84B7-95A0543926FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00677269-C039-4F10-84B7-95A0543926FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00677269-C039-4F10-84B7-95A0543926FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00677269-C039-4F10-84B7-95A0543926FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7675FAF6-A007-42DD-8E2A-D58AD96024CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7675FAF6-A007-42DD-8E2A-D58AD96024CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7675FAF6-A007-42DD-8E2A-D58AD96024CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7675FAF6-A007-42DD-8E2A-D58AD96024CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{337203D9-0B73-4D71-B9F5-5FA1EAB41B70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{337203D9-0B73-4D71-B9F5-5FA1EAB41B70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{337203D9-0B73-4D71-B9F5-5FA1EAB41B70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{337203D9-0B73-4D71-B9F5-5FA1EAB41B70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D091DAF-D263-481E-9361-FADB3D75BB14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D091DAF-D263-481E-9361-FADB3D75BB14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D091DAF-D263-481E-9361-FADB3D75BB14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D091DAF-D263-481E-9361-FADB3D75BB14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,5 +94,10 @@ Global
 		{D04D3FC3-4C02-49CE-A4D8-B75A22559F76} = {101B5D52-A3AB-4421-8B7F-3BEE09306027}
 		{D33674CA-BFE2-4576-AF13-0D8250A2F1D9} = {101B5D52-A3AB-4421-8B7F-3BEE09306027}
 		{362F6920-259B-4FE5-8F07-164D07D9B221} = {101B5D52-A3AB-4421-8B7F-3BEE09306027}
+		{FE583965-74DC-4FF4-AA7E-EAB2159CCC4D} = {0983C466-2410-4C71-B517-2F7FA15E500F}
+		{00677269-C039-4F10-84B7-95A0543926FB} = {FE583965-74DC-4FF4-AA7E-EAB2159CCC4D}
+		{7675FAF6-A007-42DD-8E2A-D58AD96024CD} = {FE583965-74DC-4FF4-AA7E-EAB2159CCC4D}
+		{337203D9-0B73-4D71-B9F5-5FA1EAB41B70} = {FE583965-74DC-4FF4-AA7E-EAB2159CCC4D}
+		{6D091DAF-D263-481E-9361-FADB3D75BB14} = {FE583965-74DC-4FF4-AA7E-EAB2159CCC4D}
 	EndGlobalSection
 EndGlobal
