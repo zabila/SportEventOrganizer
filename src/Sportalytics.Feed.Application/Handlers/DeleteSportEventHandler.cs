@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Sportalytics.Feed.Application.Commands;
 using Sportalytics.Feed.Application.Extensions;
 using Sportalytics.Feed.Domain.Entities;
-using Sportalytics.Feed.Domain.Exceptions;
 using Sportalytics.Feed.Persistence.MongoDB.Interfaces;
 
 namespace Sportalytics.Feed.Application.Handlers;
