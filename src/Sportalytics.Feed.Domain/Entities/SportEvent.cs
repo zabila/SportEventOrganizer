@@ -1,6 +1,8 @@
-﻿namespace Sportalytics.Feed.Domain.Entities;
+﻿using Sportalytics.Feed.Domain.Interfaces;
 
-public class SportEvent
+namespace Sportalytics.Feed.Domain.Entities;
+
+public class SportEvent : IEntity
 {
     public Guid Id { get; set; }
     public string? Name { get; set; }

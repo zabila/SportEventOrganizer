@@ -2,13 +2,13 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Sportalytics.Feed.Application.Commands;
-using Sportalytics.Feed.Domain.Exceptions;
-using Sportalytics.Feed.Persistence.PostgreSQL.Filters;
-using Sportalytics.Feed.Persistence.PostgreSQL.Interfaces;
+using Sportalytics.Feed.Application.Extensions;
+using Sportalytics.Feed.Domain.Entities;
+using Sportalytics.Feed.Persistence.MongoDB.Interfaces;
 
 namespace Sportalytics.Feed.Application.Handlers;
 
-internal sealed class UpdateSportEventHandler(IRepositoryManager repositoryManager, IMapper mapper) : IRequestHandler<UpdateSportEventCommand>
+internal sealed class UpdateSportEventHandler(IRepository<SportEvent> repository, IMapper mapper) : IRequestHandler<UpdateSportEventCommand>
 {
 
     public async Task Handle(UpdateSportEventCommand request, CancellationToken cancellationToken)
@@ -16,23 +16,9 @@ internal sealed class UpdateSportEventHandler(IRepositoryManager repositoryManag
         var id = request.Id;
         var sportEventDto = request.UpdateSpotEventDto;
 
-        var sportEventRepository = repositoryManager.SportEvents;
-        var sportEventFilter = new SportEventFilter
-        {
-            Ids = new[]
-            {
-                id
-            }
-        };
-
-        var sportEventQuery = sportEventRepository.Query(sportEventFilter);
-        var sportEvent = await sportEventQuery.FirstOrDefaultAsync(cancellationToken);
-        if (sportEvent is null)
-        {
-            throw new SportEventNotFoundException(id);
-        }
-
+        var sportEventQuery = repository.Query(es => es.Id == id);
+        var sportEvent = await sportEventQuery.FirstOrDefaultAsync(cancellationToken).EnsureFound();
         mapper.Map(sportEventDto, sportEvent);
-        await repositoryManager.SaveChangesAsync();
+        await repository.UpdateAsync(sportEvent!, cancellationToken);
     }
 }

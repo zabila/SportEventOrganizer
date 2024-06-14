@@ -1,5 +1,6 @@
 using Sportalytics.Feed.API.Extensions;
 using Sportalytics.Feed.Application;
+using Sportalytics.Feed.Persistence.MongoDB;
 using Sportalytics.Feed.Persistence.PostgreSQL;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,7 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .AddPresentation()
     .AddApplication()
-    .AddPersistence(builder.Configuration);
+    .AddPostgreSQL(builder.Configuration)
+    .AddMongo(builder.Configuration);
 
 var app = builder.Build();
 app.ConfigureExceptionHandler();

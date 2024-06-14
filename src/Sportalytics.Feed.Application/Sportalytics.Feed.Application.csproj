@@ -15,7 +15,8 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Sportalytics.Feed.Domain\Sportalytics.Feed.Domain.csproj"/>
-        <ProjectReference Include="..\Sportalytics.Feed.Persistence.PostgreSQL\Sportalytics.Feed.Persistence.PostgreSQL.csproj" />
+        <ProjectReference Include="..\Sportalytics.Feed.Persistence.MongoDB\Sportalytics.Feed.Persistence.MongoDB.csproj"/>
+        <ProjectReference Include="..\Sportalytics.Feed.Persistence.PostgreSQL\Sportalytics.Feed.Persistence.PostgreSQL.csproj"/>
     </ItemGroup>
 
 </Project>

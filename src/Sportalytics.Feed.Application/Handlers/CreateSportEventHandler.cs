@@ -2,19 +2,16 @@
 using MediatR;
 using Sportalytics.Feed.Domain.Entities;
 using Sportalytics.Feed.Application.Commands;
-using Sportalytics.Feed.Persistence.PostgreSQL.Interfaces;
+using Sportalytics.Feed.Persistence.MongoDB.Interfaces;
 
 namespace Sportalytics.Feed.Application.Handlers;
 
-internal sealed class CreateSportEventHandler(IRepositoryManager repositoryManager, IMapper mapper) : IRequestHandler<CreateSportEventCommand, Guid>
+internal sealed class CreateSportEventHandler(IRepository<SportEvent> repository, IMapper mapper) : IRequestHandler<CreateSportEventCommand, Guid>
 {
     public async Task<Guid> Handle(CreateSportEventCommand request, CancellationToken cancellationToken)
     {
         var sportEvent = mapper.Map<SportEvent>(request.CreateSportEventDto);
-
-        var sportEventRepository = repositoryManager.SportEvents;
-        await sportEventRepository.AddAsync(sportEvent, cancellationToken);
-        await repositoryManager.SaveChangesAsync();
+        await repository.AddAsync(sportEvent, cancellationToken);
         return sportEvent.Id;
     }
 }
