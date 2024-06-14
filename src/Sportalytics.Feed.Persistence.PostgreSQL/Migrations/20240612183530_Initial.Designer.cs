@@ -5,14 +5,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using Sportalytics.Feed.Persistence.Core;
+using Sportalytics.Feed.Persistence.PostgreSQL.Core;
 
 #nullable disable
 
-namespace Sportalytics.Feed.Persistence.Migrations
+namespace Sportalytics.Feed.Persistence.PostgreSQL.Migrations
 {
-    [DbContext(typeof(RepositoryContext))]
-    [Migration("20240531091053_Initial")]
+    [DbContext(typeof(FeedServiceContext))]
+    [Migration("20240612183530_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -26,7 +26,7 @@ namespace Sportalytics.Feed.Persistence.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Sportalytics.Domain.Entities.SportEvent", b =>
+            modelBuilder.Entity("Sportalytics.Feed.Domain.Entities.SportEvent", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()

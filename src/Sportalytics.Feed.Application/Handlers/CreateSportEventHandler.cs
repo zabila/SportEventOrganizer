@@ -2,11 +2,11 @@
 using MediatR;
 using Sportalytics.Feed.Domain.Entities;
 using Sportalytics.Feed.Application.Commands;
-using Sportalytics.Feed.Application.Interfaces;
+using Sportalytics.Feed.Persistence.PostgreSQL.Interfaces;
 
 namespace Sportalytics.Feed.Application.Handlers;
 
-internal sealed class CreateSportEventHandler(IRepositoryManager repositoryManager, IUnitOfWork unitOfWork, IMapper mapper) : IRequestHandler<CreateSportEventCommand, Guid>
+internal sealed class CreateSportEventHandler(IRepositoryManager repositoryManager, IMapper mapper) : IRequestHandler<CreateSportEventCommand, Guid>
 {
     public async Task<Guid> Handle(CreateSportEventCommand request, CancellationToken cancellationToken)
     {
@@ -14,7 +14,7 @@ internal sealed class CreateSportEventHandler(IRepositoryManager repositoryManag
 
         var sportEventRepository = repositoryManager.SportEvents;
         await sportEventRepository.AddAsync(sportEvent, cancellationToken);
-        await unitOfWork.SaveChangesAsync();
+        await repositoryManager.SaveChangesAsync();
         return sportEvent.Id;
     }
 }

@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using Sportalytics.Feed.Persistence.Core;
+using Sportalytics.Feed.Persistence.PostgreSQL.Core;
 
 #nullable disable
 
-namespace Sportalytics.Feed.Persistence.Migrations
+namespace Sportalytics.Feed.Persistence.PostgreSQL.Migrations
 {
-    [DbContext(typeof(RepositoryContext))]
-    partial class RepositoryContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(FeedServiceContext))]
+    partial class FeedServiceContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Sportalytics.Feed.Application.DTOs;
-using Sportalytics.Feed.Application.Interfaces;
 using Sportalytics.Feed.Application.Queries;
 using Sportalytics.Feed.Domain.Exceptions;
+using Sportalytics.Feed.Persistence.PostgreSQL.Filters;
+using Sportalytics.Feed.Persistence.PostgreSQL.Interfaces;
 
 namespace Sportalytics.Feed.Application.Handlers;
 
@@ -13,7 +15,18 @@ internal sealed class GetSportEventByIdHandler(IRepositoryManager repositoryMana
     {
         var id = request.SportId;
         var sportEventRepository = repositoryManager.SportEvents;
-        var sportEvent = await sportEventRepository.GetByIdAsync(id);
+
+
+        var sportEventFilter = new SportEventFilter
+        {
+            Ids = new[]
+            {
+                id
+            }
+        };
+
+        var sportEventQuery = sportEventRepository.Query(sportEventFilter);
+        var sportEvent = await sportEventQuery.FirstOrDefaultAsync(cancellationToken);
         if (sportEvent is null)
         {
             throw new SportEventNotFoundException(id);

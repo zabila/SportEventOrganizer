@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Sportalytics.Feed.Domain.Entities;
-using Sportalytics.Feed.Persistence.Configuration;
+using Sportalytics.Feed.Persistence.PostgreSQL.Configuration;
 
-namespace Sportalytics.Feed.Persistence.Core;
+namespace Sportalytics.Feed.Persistence.PostgreSQL.Core;
 
-public class RepositoryContext(DbContextOptions options) : DbContext(options)
+public class FeedServiceContext(DbContextOptions options) : DbContext(options)
 {
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -14,5 +14,5 @@ public class RepositoryContext(DbContextOptions options) : DbContext(options)
         modelBuilder.ApplyConfiguration(new SportEventConfiguration());
     }
 
-    public DbSet<SportEvent>? SportEvents { get; set; }
+    public DbSet<SportEvent> SportEvents { get; set; }
 }

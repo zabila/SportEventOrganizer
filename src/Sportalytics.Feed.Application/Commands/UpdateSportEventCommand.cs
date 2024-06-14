@@ -3,4 +3,4 @@ using Sportalytics.Feed.Application.DTOs;
 
 namespace Sportalytics.Feed.Application.Commands;
 
-public sealed record UpdateSportEventCommand(Guid Guid, UpdateSpotEventDto UpdateSpotEventDto, CancellationToken CancellationToken) : IRequest;
+public sealed record UpdateSportEventCommand(Guid Id, UpdateSpotEventDto UpdateSpotEventDto, CancellationToken CancellationToken) : IRequest;

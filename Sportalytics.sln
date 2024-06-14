@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Feed.Infrastru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Feed.API", "src\Sportalytics.Feed.API\Sportalytics.Feed.API.csproj", "{BA9E5EA2-EFA3-494F-8123-A9FECEA9894C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Feed.Persistence", "src\Sportalytics.Feed.Persistence\Sportalytics.Feed.Persistence.csproj", "{D04D3FC3-4C02-49CE-A4D8-B75A22559F76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Feed.Persistence.PostgreSQL", "src\Sportalytics.Feed.Persistence.PostgreSQL\Sportalytics.Feed.Persistence.PostgreSQL.csproj", "{D04D3FC3-4C02-49CE-A4D8-B75A22559F76}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sportalytics.Feed.Presentation", "src\Sportalytics.Feed.Presentation\Sportalytics.Feed.Presentation.csproj", "{D33674CA-BFE2-4576-AF13-0D8250A2F1D9}"
 EndProject

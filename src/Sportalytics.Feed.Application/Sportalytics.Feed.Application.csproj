@@ -9,12 +9,13 @@
 
     <ItemGroup>
         <PackageReference Include="AutoMapper" Version="13.0.1"/>
-        <PackageReference Include="MediatR" Version="12.3.0" />
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+        <PackageReference Include="MediatR" Version="12.3.0"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Sportalytics.Feed.Domain\Sportalytics.Feed.Domain.csproj" />
+        <ProjectReference Include="..\Sportalytics.Feed.Domain\Sportalytics.Feed.Domain.csproj"/>
+        <ProjectReference Include="..\Sportalytics.Feed.Persistence.PostgreSQL\Sportalytics.Feed.Persistence.PostgreSQL.csproj" />
     </ItemGroup>
 
 </Project>
