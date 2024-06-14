@@ -92,7 +92,7 @@ public class ScopedApiSportService : IScopedApiSportService
 
         var errorModel = JsonSerializer.Deserialize<ErrorModel>(error);
         if (errorModel?.Token is not null)
-            throw new ApiSportTokenNotFoundException();
+            throw new ApiSportTokenInvalidException();
     }
 
     private async Task ParseAndSendCommand(JsonElement json, CancellationToken stoppingToken)
