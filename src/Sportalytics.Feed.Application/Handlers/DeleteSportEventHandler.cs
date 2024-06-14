@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Sportalytics.Feed.Application.Commands;
+using Sportalytics.Feed.Application.Extensions;
 using Sportalytics.Feed.Domain.Entities;
 using Sportalytics.Feed.Domain.Exceptions;
 using Sportalytics.Feed.Persistence.MongoDB.Interfaces;
@@ -14,11 +15,7 @@ internal sealed class DeleteSportEventHandler(IRepository<SportEvent> repository
     {
         var id = request.Id;
         var sportEventQuery = repository.Query(es => es.Id == id);
-        var sportEvent = await sportEventQuery.FirstOrDefaultAsync(cancellationToken);
-        if (sportEvent == null)
-        {
-            throw new SportEventNotFoundException(id);
-        }
-        await repository.DeleteAsync(sportEvent, cancellationToken);
+        var sportEvent = await sportEventQuery.FirstOrDefaultAsync(cancellationToken).EnsureFound();
+        await repository.DeleteAsync(sportEvent!, cancellationToken);
     }
 }

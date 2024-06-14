@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Sportalytics.Feed.Application.DTOs;
+using Sportalytics.Feed.Application.Extensions;
 using Sportalytics.Feed.Application.Queries;
 using Sportalytics.Feed.Domain.Entities;
 using Sportalytics.Feed.Domain.Exceptions;
@@ -15,12 +16,7 @@ internal sealed class GetSportEventByIdHandler(IRepository<SportEvent> repositor
     {
         var id = request.Id;
         var sportEventQuery = repository.Query(es => es.Id == id);
-        var sportEvent = await sportEventQuery.FirstOrDefaultAsync(cancellationToken);
-        if (sportEvent == null)
-        {
-            throw new SportEventNotFoundException(id);
-        }
-
+        var sportEvent = await sportEventQuery.FirstOrDefaultAsync(cancellationToken).EnsureFound();
         var response = mapper.Map<ResponseSportEventDto>(sportEvent);
         return response;
     }
