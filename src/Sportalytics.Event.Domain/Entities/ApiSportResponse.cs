@@ -12,7 +12,7 @@ public class ApiSportResponse
     public Parameters? Parameters { get; set; }
 
     [JsonPropertyName("errors")]
-    public List<object>? Errors { get; set; }
+    public ErrorModel? Errors { get; set; }
 
     [JsonPropertyName("results")]
     public int Results { get; set; }
