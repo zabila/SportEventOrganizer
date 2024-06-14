@@ -41,22 +41,9 @@ public class ScopedApiSportService : IScopedApiSportService
             try
             {
                 var result = await SendRequestAsync(client, stoppingToken);
-                if (result is null)
-                {
-                    Console.WriteLine("Failed to get data from the API. Retrying in 10 seconds.");
-                    await Task.Delay(_timeForRetry, stoppingToken);
-                    continue;
-                }
+                var json = result.EnsureExists().RootElement;
 
-                var json = result.RootElement;
-
-                var error = json.GetProperty("errors").ToString();
-                if (error != "[]" || string.IsNullOrEmpty(error))
-                {
-                    var errorModel = JsonSerializer.Deserialize<ErrorModel>(error);
-                    if (errorModel?.Token is not null)
-                        throw new ApiSportTokenNotFoundException();
-                }
+                HandleErrors(json);
 
                 var response = json.GetProperty("response").ToString().EnsureExists();
                 var apiResponse = JsonSerializer.Deserialize<List<Response>>(response).EnsureExists();
@@ -102,5 +89,16 @@ public class ScopedApiSportService : IScopedApiSportService
         client.DefaultRequestHeaders.Add("x-apisports-key", apiKey);
 
         return client;
+    }
+
+    private static void HandleErrors(JsonElement json)
+    {
+        var error = json.GetProperty("errors").ToString();
+        if (error == "[]" && !string.IsNullOrEmpty(error))
+            return;
+
+        var errorModel = JsonSerializer.Deserialize<ErrorModel>(error);
+        if (errorModel?.Token is not null)
+            throw new ApiSportTokenNotFoundException();
     }
 }
