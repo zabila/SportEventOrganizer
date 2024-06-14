@@ -44,14 +44,7 @@ public class ScopedApiSportService : IScopedApiSportService
                 var json = result.EnsureExists().RootElement;
 
                 HandleErrors(json);
-
-                var response = json.GetProperty("response").ToString().EnsureExists();
-                var apiResponse = JsonSerializer.Deserialize<List<Response>>(response).EnsureExists();
-
-                var responseDto = new ProcessApiSportsResponseDto(apiResponse);
-                var command = new ProcessSportEventsCommand(responseDto, stoppingToken);
-                await _sender.Send(command, stoppingToken);
-
+                await ParseAndSendCommand(json, stoppingToken);
             }
             catch (HttpRequestException ex)
             {
@@ -100,5 +93,15 @@ public class ScopedApiSportService : IScopedApiSportService
         var errorModel = JsonSerializer.Deserialize<ErrorModel>(error);
         if (errorModel?.Token is not null)
             throw new ApiSportTokenNotFoundException();
+    }
+
+    private async Task ParseAndSendCommand(JsonElement json, CancellationToken stoppingToken)
+    {
+        var response = json.GetProperty("response").ToString().EnsureExists();
+        var apiResponse = JsonSerializer.Deserialize<List<Response>>(response).EnsureExists();
+
+        var responseDto = new ProcessApiSportsResponseDto(apiResponse);
+        var command = new ProcessSportEventsCommand(responseDto, stoppingToken);
+        await _sender.Send(command, stoppingToken);
     }
 }
