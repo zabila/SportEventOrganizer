@@ -1,12 +1,10 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace Sportalytics.Event.Domain.Entities.ApiSports;
 
+[JsonObject(NamingStrategyType = typeof(LowercaseNamingStrategy))]
 public class Parameters
 {
-    [JsonPropertyName("date")]
     public string? Date { get; set; }
-
-    [JsonPropertyName("status")]
     public string? Status { get; set; }
 }

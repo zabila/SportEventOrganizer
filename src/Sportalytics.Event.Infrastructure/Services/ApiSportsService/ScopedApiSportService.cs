@@ -3,6 +3,7 @@ using System.Text.Json;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using Sportalytics.Event.Application.Commands;
 using Sportalytics.Event.Application.DTOs;
 using Sportalytics.Event.Domain.Entities;
@@ -87,18 +88,17 @@ public class ScopedApiSportService : IScopedApiSportService
     private static void HandleErrors(JsonElement json)
     {
         var error = json.GetProperty("errors").ToString();
-        if (error == "[]" && !string.IsNullOrEmpty(error))
+        if (error == "[]")
             return;
 
-        var errorModel = JsonSerializer.Deserialize<ErrorModel>(error);
-        if (errorModel?.Token is not null)
+        if (error.Contains("token"))
             throw new ApiSportTokenInvalidException();
     }
 
     private async Task ParseAndSendCommand(JsonElement json, CancellationToken stoppingToken)
     {
         var response = json.GetProperty("response").ToString().EnsureExists();
-        var apiResponse = JsonSerializer.Deserialize<List<Response>>(response).EnsureExists();
+        var apiResponse = JsonConvert.DeserializeObject<List<Response>>(response).EnsureExists();
 
         var responseDto = new ProcessApiSportsResponseDto(apiResponse);
         var command = new ProcessSportEventsCommand(responseDto, stoppingToken);

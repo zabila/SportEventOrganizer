@@ -14,6 +14,6 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.Location,
                 opt => opt.MapFrom(src => src.Fixture!.Venue!.City))
             .ForMember(dest => dest.Date,
-                opt => opt.MapFrom(src => src.Fixture!.Date!.Date));
+                opt => opt.MapFrom(src => src.Fixture!.Date));
     }
 }

@@ -1,21 +1,13 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace Sportalytics.Event.Domain.Entities.ApiSports;
 
+[JsonObject(NamingStrategyType = typeof(LowercaseNamingStrategy))]
 public class Response
 {
-    [JsonPropertyName("fixture")]
     public Fixture? Fixture { get; set; }
-
-    [JsonPropertyName("league")]
     public League? League { get; set; }
-
-    [JsonPropertyName("teams")]
     public Teams? Teams { get; set; }
-
-    [JsonPropertyName("goals")]
     public Goals? Goals { get; set; }
-
-    [JsonPropertyName("score")]
     public Score? Score { get; set; }
 }

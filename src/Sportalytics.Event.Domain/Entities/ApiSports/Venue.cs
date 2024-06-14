@@ -1,15 +1,11 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace Sportalytics.Event.Domain.Entities.ApiSports;
 
+[JsonObject(NamingStrategyType = typeof(LowercaseNamingStrategy))]
 public class Venue
 {
-    [JsonPropertyName("id")]
     public int? Id { get; set; }
-
-    [JsonPropertyName("name")]
     public string? Name { get; set; }
-
-    [JsonPropertyName("city")]
     public string? City { get; set; }
 }

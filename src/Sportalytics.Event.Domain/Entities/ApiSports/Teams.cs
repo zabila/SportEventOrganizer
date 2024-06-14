@@ -1,12 +1,10 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace Sportalytics.Event.Domain.Entities.ApiSports;
 
+[JsonObject(NamingStrategyType = typeof(LowercaseNamingStrategy))]
 public class Teams
 {
-    [JsonPropertyName("home")]
     public Team? Home { get; set; }
-
-    [JsonPropertyName("away")]
     public Team? Away { get; set; }
 }

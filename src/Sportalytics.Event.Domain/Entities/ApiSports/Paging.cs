@@ -1,12 +1,10 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace Sportalytics.Event.Domain.Entities.ApiSports;
 
+[JsonObject(NamingStrategyType = typeof(LowercaseNamingStrategy))]
 public class Paging
 {
-    [JsonPropertyName("current")]
     public int Current { get; set; }
-
-    [JsonPropertyName("total")]
     public int Total { get; set; }
 }

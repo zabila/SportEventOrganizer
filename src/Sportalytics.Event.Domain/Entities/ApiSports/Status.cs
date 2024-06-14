@@ -1,15 +1,11 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace Sportalytics.Event.Domain.Entities.ApiSports;
 
+[JsonObject(NamingStrategyType = typeof(LowercaseNamingStrategy))]
 public class Status
 {
-    [JsonPropertyName("long")]
     public string? Long { get; set; }
-
-    [JsonPropertyName("short")]
     public string? Short { get; set; }
-
-    [JsonPropertyName("elapsed")]
     public int? Elapsed { get; set; }
 }
