@@ -1,6 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Hangfire;
+using Hangfire.PostgreSql;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using Sportalytics.Event.Infrastructure.Interfaces;
 using Sportalytics.Event.Infrastructure.Services.ApiSportsService;
 
@@ -15,10 +16,15 @@ public static class DependencyInjection
         });
         services.Configure<ApiSportsServiceSettings>(configuration.GetSection(nameof(ApiSportsServiceSettings)));
 
-        services.AddHttpClient();
-        services.AddHostedService<ScopedBackgroundApiSportService>();
-        services.AddScoped<IScopedApiSportService, ScopedApiSportService>();
+        services.AddHangfire(config =>
+            config.UsePostgreSqlStorage(c =>
+                c.UseNpgsqlConnection(configuration.GetConnectionString("DefaultConnection"))));
 
+        services.AddHangfireServer();
+
+        services.AddHttpClient();
+        services.AddScoped<IScopedApiSportService, ScopedApiSportService>();
+        services.AddSingleton<IScopedBackgroundApiSportService, ScopedBackgroundApiSportService>();
         return services;
     }
 }

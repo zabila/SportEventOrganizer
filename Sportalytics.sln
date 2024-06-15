@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sportalytics.Event.Domain",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sportalytics.Event.Infrastructure", "src\Sportalytics.Event.Infrastructure\Sportalytics.Event.Infrastructure.csproj", "{6D091DAF-D263-481E-9361-FADB3D75BB14}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sportalytics.Event.Presentation", "src\Sportalytics.Event.Presentation\Sportalytics.Event.Presentation.csproj", "{2A74EBA7-A8B6-4B0E-BB3A-5EEA30B6468F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{6D091DAF-D263-481E-9361-FADB3D75BB14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D091DAF-D263-481E-9361-FADB3D75BB14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D091DAF-D263-481E-9361-FADB3D75BB14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A74EBA7-A8B6-4B0E-BB3A-5EEA30B6468F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A74EBA7-A8B6-4B0E-BB3A-5EEA30B6468F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A74EBA7-A8B6-4B0E-BB3A-5EEA30B6468F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A74EBA7-A8B6-4B0E-BB3A-5EEA30B6468F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,5 +105,6 @@ Global
 		{7675FAF6-A007-42DD-8E2A-D58AD96024CD} = {FE583965-74DC-4FF4-AA7E-EAB2159CCC4D}
 		{337203D9-0B73-4D71-B9F5-5FA1EAB41B70} = {FE583965-74DC-4FF4-AA7E-EAB2159CCC4D}
 		{6D091DAF-D263-481E-9361-FADB3D75BB14} = {FE583965-74DC-4FF4-AA7E-EAB2159CCC4D}
+		{2A74EBA7-A8B6-4B0E-BB3A-5EEA30B6468F} = {FE583965-74DC-4FF4-AA7E-EAB2159CCC4D}
 	EndGlobalSection
 EndGlobal

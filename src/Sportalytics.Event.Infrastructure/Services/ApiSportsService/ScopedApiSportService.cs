@@ -6,7 +6,6 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Sportalytics.Event.Application.Commands;
 using Sportalytics.Event.Application.DTOs;
-using Sportalytics.Event.Domain.Entities;
 using Sportalytics.Event.Domain.Entities.ApiSports;
 using Sportalytics.Event.Domain.Exceptions;
 using Sportalytics.Event.Domain.Extensions;
@@ -37,25 +36,11 @@ public class ScopedApiSportService : IScopedApiSportService
     public async Task DoWorkAsync(CancellationToken stoppingToken)
     {
         var client = CreateClient();
-        while (!stoppingToken.IsCancellationRequested)
-        {
-            try
-            {
-                var result = await SendRequestAsync(client, stoppingToken);
-                var json = result.EnsureExists().RootElement;
+        var result = await SendRequestAsync(client, stoppingToken);
+        var json = result.EnsureExists().RootElement;
 
-                HandleErrors(json);
-                await ParseAndSendCommand(json, stoppingToken);
-            }
-            catch (HttpRequestException ex)
-            {
-                Console.WriteLine($"Failed to get data from the API: {ex.Message}. Retrying in 10 seconds.");
-                await Task.Delay(_timeForRetry, stoppingToken);
-                continue;
-            }
-
-            await Task.Delay(_timeToNextRun, stoppingToken);
-        }
+        HandleErrors(json);
+        await ParseAndSendCommand(json, stoppingToken);
     }
 
     private async Task<JsonDocument?> SendRequestAsync(HttpClient client, CancellationToken stoppingToken)
