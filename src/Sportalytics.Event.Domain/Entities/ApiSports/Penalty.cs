@@ -2,7 +2,7 @@
 
 namespace Sportalytics.Event.Domain.Entities.ApiSports;
 
-[JsonObject(NamingStrategyType = typeof(LowercaseNamingStrategy))]
+[JsonObject(NamingStrategyType = typeof(LowerCaseNamingStrategy))]
 public class Penalty
 {
     public int? Home { get; set; }

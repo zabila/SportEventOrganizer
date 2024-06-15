@@ -2,7 +2,7 @@
 
 namespace Sportalytics.Event.Domain.Entities.ApiSports;
 
-public class LowercaseNamingStrategy : NamingStrategy
+public class LowerCaseNamingStrategy : NamingStrategy
 {
     protected override string ResolvePropertyName(string name)
     {

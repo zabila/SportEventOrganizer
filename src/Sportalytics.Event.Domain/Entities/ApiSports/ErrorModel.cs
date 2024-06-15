@@ -2,7 +2,7 @@
 
 namespace Sportalytics.Event.Domain.Entities.ApiSports;
 
-[JsonObject(NamingStrategyType = typeof(LowercaseNamingStrategy))]
+[JsonObject(NamingStrategyType = typeof(LowerCaseNamingStrategy))]
 public class ErrorModel
 {
     public string? Token { get; set; }
