@@ -4,5 +4,5 @@ namespace Sportalytics.Event.Infrastructure.Interfaces;
 
 public interface IScopedApiSportService
 {
-    Task DoWorkAsync(CancellationToken stoppingToken);
+    Task DoWorkAsync(CancellationToken cancellationToken);
 }

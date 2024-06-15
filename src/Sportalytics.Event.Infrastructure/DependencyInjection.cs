@@ -1,7 +1,10 @@
-﻿using Hangfire;
+﻿using Flurl.Http.Configuration;
+using Flurl.Http;
+using Hangfire;
 using Hangfire.PostgreSql;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Sportalytics.Event.Domain.Extensions;
 using Sportalytics.Event.Infrastructure.Interfaces;
 using Sportalytics.Event.Infrastructure.Services.ApiSportsService;
 
@@ -22,7 +25,10 @@ public static class DependencyInjection
 
         services.AddHangfireServer();
 
-        services.AddHttpClient();
+        var apiSportsServiceSettings = configuration.GetSection(nameof(ApiSportsServiceSettings)).Get<ApiSportsServiceSettings>();
+        var baseUrl = apiSportsServiceSettings.EnsureExists().BaseUrl.EnsureExists();
+        services.AddSingleton<IFlurlClientCache>(sp => new FlurlClientCache().Add(nameof(ScopedApiSportService), baseUrl));
+
         services.AddScoped<IScopedApiSportService, ScopedApiSportService>();
         services.AddSingleton<IScopedBackgroundApiSportService, ScopedBackgroundApiSportService>();
         return services;
