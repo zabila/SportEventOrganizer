@@ -27,10 +27,10 @@ public static class DependencyInjection
 
         var apiSportsServiceSettings = configuration.GetSection(nameof(ApiSportsServiceSettings)).Get<ApiSportsServiceSettings>();
         var baseUrl = apiSportsServiceSettings.EnsureExists().BaseUrl.EnsureExists();
-        services.AddSingleton<IFlurlClientCache>(sp => new FlurlClientCache().Add(nameof(ScopedApiSportService), baseUrl));
+        services.AddSingleton<IFlurlClientCache>(sp => new FlurlClientCache().Add(nameof(ApiSportService), baseUrl));
 
-        services.AddScoped<IScopedApiSportService, ScopedApiSportService>();
-        services.AddSingleton<IScopedBackgroundApiSportService, ScopedBackgroundApiSportService>();
+        services.AddScoped<IApiSportService, ApiSportService>();
+        services.AddSingleton<IBackgroundApiSportService, BackgroundApiSportService>();
         return services;
     }
 }

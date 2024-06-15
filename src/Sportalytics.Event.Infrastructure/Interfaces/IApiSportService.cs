@@ -2,7 +2,7 @@
 
 namespace Sportalytics.Event.Infrastructure.Interfaces;
 
-public interface IScopedApiSportService
+public interface IApiSportService
 {
     Task DoWorkAsync(CancellationToken cancellationToken);
 }

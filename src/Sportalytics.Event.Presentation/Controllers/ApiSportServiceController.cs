@@ -5,19 +5,19 @@ namespace Sportalytics.Event.Presentation.Controllers;
 
 [Route("api-sport-service")]
 [ApiController]
-public class ApiSportServiceController(IScopedBackgroundApiSportService scopedBackgroundApiSportService) : ControllerBase
+public class ApiSportServiceController(IBackgroundApiSportService backgroundApiSportService) : ControllerBase
 {
     [HttpGet("start")]
     public IActionResult Start()
     {
-        scopedBackgroundApiSportService.Start();
+        backgroundApiSportService.Start();
         return Ok();
     }
 
     [HttpGet("stop")]
     public IActionResult Stop()
     {
-        scopedBackgroundApiSportService.Stop();
+        backgroundApiSportService.Stop();
         return Ok();
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Sportalytics.Event.Infrastructure.Interfaces;
 
-public interface IScopedBackgroundApiSportService
+public interface IBackgroundApiSportService
 {
     void Start();
     void Stop();

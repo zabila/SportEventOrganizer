@@ -14,8 +14,7 @@ using Sportalytics.Event.Infrastructure.Interfaces;
 
 namespace Sportalytics.Event.Infrastructure.Services.ApiSportsService;
 
-public class ScopedApiSportService(IFlurlClientCache flurlClientCache, ISender sender, IOptions<ApiSportsServiceSettings> serviceSettings)
-    : IScopedApiSportService
+public class ApiSportService(IFlurlClientCache flurlClientCache, ISender sender, IOptions<ApiSportsServiceSettings> serviceSettings) : IApiSportService
 {
     private readonly ApiSportsServiceSettings _apiSportsServiceSettings = serviceSettings.Value;
 
@@ -34,7 +33,7 @@ public class ScopedApiSportService(IFlurlClientCache flurlClientCache, ISender s
         var today = DateTime.UtcNow.ToString("yyyy-MM-dd");
 
         var response = await flurlClientCache
-            .Get(nameof(ScopedApiSportService))
+            .Get(nameof(ApiSportService))
             .Request("fixtures")
             .SetQueryParams(new
             {
