@@ -16,6 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\Sportalytics.Event.Infrastructure.Kafka\Sportalytics.Event.Infrastructure.Kafka.csproj"/>
         <ProjectReference Include="..\Sportalytics.Event.Infrastructure\Sportalytics.Event.Infrastructure.csproj"/>
         <ProjectReference Include="..\Sportalytics.Event.Presentation\Sportalytics.Event.Presentation.csproj"/>
     </ItemGroup>

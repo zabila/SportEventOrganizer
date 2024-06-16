@@ -33,6 +33,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sportalytics.Event.Infrastr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sportalytics.Event.Presentation", "src\Sportalytics.Event.Presentation\Sportalytics.Event.Presentation.csproj", "{2A74EBA7-A8B6-4B0E-BB3A-5EEA30B6468F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sportalytics.Event.Infrastructure.Kafka", "src\Sportalytics.Event.Infrastructure.Kafka\Sportalytics.Event.Infrastructure.Kafka.csproj", "{88464F68-883A-429B-B47B-2D011D9E1D5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sportalytics.Feed.Infrastructure.Kafka", "src\ Sportalytics.Feed.Infrastructure.Kafka\Sportalytics.Feed.Infrastructure.Kafka.csproj", "{8C1B9FA3-0AE5-4482-9D4C-FC5EB589EEE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +91,14 @@ Global
 		{2A74EBA7-A8B6-4B0E-BB3A-5EEA30B6468F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A74EBA7-A8B6-4B0E-BB3A-5EEA30B6468F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A74EBA7-A8B6-4B0E-BB3A-5EEA30B6468F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88464F68-883A-429B-B47B-2D011D9E1D5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88464F68-883A-429B-B47B-2D011D9E1D5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88464F68-883A-429B-B47B-2D011D9E1D5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88464F68-883A-429B-B47B-2D011D9E1D5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C1B9FA3-0AE5-4482-9D4C-FC5EB589EEE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C1B9FA3-0AE5-4482-9D4C-FC5EB589EEE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C1B9FA3-0AE5-4482-9D4C-FC5EB589EEE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C1B9FA3-0AE5-4482-9D4C-FC5EB589EEE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -106,5 +118,7 @@ Global
 		{337203D9-0B73-4D71-B9F5-5FA1EAB41B70} = {FE583965-74DC-4FF4-AA7E-EAB2159CCC4D}
 		{6D091DAF-D263-481E-9361-FADB3D75BB14} = {FE583965-74DC-4FF4-AA7E-EAB2159CCC4D}
 		{2A74EBA7-A8B6-4B0E-BB3A-5EEA30B6468F} = {FE583965-74DC-4FF4-AA7E-EAB2159CCC4D}
+		{88464F68-883A-429B-B47B-2D011D9E1D5B} = {FE583965-74DC-4FF4-AA7E-EAB2159CCC4D}
+		{8C1B9FA3-0AE5-4482-9D4C-FC5EB589EEE7} = {101B5D52-A3AB-4421-8B7F-3BEE09306027}
 	EndGlobalSection
 EndGlobal
