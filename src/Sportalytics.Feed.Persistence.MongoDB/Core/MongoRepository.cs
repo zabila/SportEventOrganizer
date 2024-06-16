@@ -1,5 +1,6 @@
 ﻿using System.Linq.Expressions;
 using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 using Sportalytics.Feed.Domain.Interfaces;
 using Sportalytics.Feed.Persistence.MongoDB.Interfaces;
 
@@ -10,9 +11,9 @@ public class MongoRepository<T>(IMongoDatabase database, string collectionName) 
     private readonly IMongoCollection<T> _collection = database.GetCollection<T>(collectionName);
     private readonly FilterDefinitionBuilder<T> _filterDefinitionBuilder = Builders<T>.Filter;
 
-    public IQueryable<T> Query(Expression<Func<T, bool>> filter)
+    public IFindFluent<T, T> Query(Expression<Func<T, bool>> filter)
     {
-        var foundList = _collection.AsQueryable().Where(filter);
+        var foundList = _collection.Find(filter);
         return foundList;
     }
 

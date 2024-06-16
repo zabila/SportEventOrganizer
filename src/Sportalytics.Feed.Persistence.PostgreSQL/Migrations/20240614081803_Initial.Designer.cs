@@ -12,7 +12,7 @@ using Sportalytics.Feed.Persistence.PostgreSQL.Core;
 namespace Sportalytics.Feed.Persistence.PostgreSQL.Migrations
 {
     [DbContext(typeof(FeedServiceContext))]
-    [Migration("20240612183530_Initial")]
+    [Migration("20240614081803_Initial")]
     partial class Initial
     {
         /// <inheritdoc />

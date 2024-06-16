@@ -4,14 +4,13 @@ namespace Sportalytics.Feed.Application.Extensions;
 
 public static class QueryableExtensions
 {
-    public async static Task<T> EnsureFound<T>(this Task<T> task) where T : class?
+    public static T EnsureFound<T>(this T? entity) where T : class?
     {
-        var result = await task;
-        if (result == null)
+        if (entity is null)
         {
             throw new EntityNotFoundException();
         }
 
-        return result;
+        return entity;
     }
 }

@@ -8,14 +8,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="MediatR" Version="12.3.0"/>
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5"/>
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0"/>
-        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Sportalytics.Feed.Application\Sportalytics.Feed.Application.csproj"/>
+        <ProjectReference Include="..\Sportalytics.Event.Infrastructure\Sportalytics.Event.Infrastructure.csproj"/>
     </ItemGroup>
 
 </Project>

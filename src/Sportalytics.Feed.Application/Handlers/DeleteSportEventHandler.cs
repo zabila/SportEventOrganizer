@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using Microsoft.EntityFrameworkCore;
+using MongoDB.Driver;
 using Sportalytics.Feed.Application.Commands;
 using Sportalytics.Feed.Application.Extensions;
 using Sportalytics.Feed.Domain.Entities;
@@ -9,7 +9,6 @@ namespace Sportalytics.Feed.Application.Handlers;
 
 internal sealed class DeleteSportEventHandler(IRepository<SportEvent> repository) : IRequestHandler<DeleteSportEventCommand>
 {
-
     public async Task Handle(DeleteSportEventCommand request, CancellationToken cancellationToken)
     {
         var id = request.Id;
