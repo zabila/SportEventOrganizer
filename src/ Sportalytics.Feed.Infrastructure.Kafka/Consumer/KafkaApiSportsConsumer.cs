@@ -13,7 +13,7 @@ public class KafkaApiSportsConsumer(ConsumerConfig config, ISender sender, IMapp
     public override async Task ConsumeAsync(string topic, CancellationToken cancellationToken)
     {
         Consumer.Subscribe(topic);
-        while (true)
+        while (!cancellationToken.IsCancellationRequested)
         {
             var consumeResult = Consumer.Consume(cancellationToken);
             Console.WriteLine($"Consumed id {consumeResult.Message.Key}, message '{consumeResult.Message.Value}' at: '{consumeResult.TopicPartitionOffset}'.");
