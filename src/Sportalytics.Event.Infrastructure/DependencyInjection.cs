@@ -21,7 +21,7 @@ public static class DependencyInjection
 
         services.AddHangfire(config =>
             config.UsePostgreSqlStorage(c =>
-                c.UseNpgsqlConnection(configuration.GetConnectionString("DefaultConnection"))));
+                c.UseNpgsqlConnection(configuration.GetConnectionString("DefaultHangfireConnection"))));
 
         services.AddHangfireServer();
 

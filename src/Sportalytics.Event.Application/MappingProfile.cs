@@ -9,6 +9,8 @@ public class MappingProfile : Profile
     public MappingProfile()
     {
         CreateMap<Response, SportEvent>()
+            .ForMember(dest => dest.Id,
+                opt => opt.MapFrom(src => Guid.NewGuid()))
             .ForMember(dest => dest.Name,
                 opt => opt.MapFrom(src => src.Teams!.Home!.Name + " vs " + src.Teams!.Away!.Name))
             .ForMember(dest => dest.Location,

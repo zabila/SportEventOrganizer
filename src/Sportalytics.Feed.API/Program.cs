@@ -1,5 +1,7 @@
 using Sportalytics.Feed.API.Extensions;
 using Sportalytics.Feed.Application;
+using Sportalytics.Feed.Infrastructure;
+using Sportalytics.Feed.Infrastructure.Kafka;
 using Sportalytics.Feed.Persistence.MongoDB;
 using Sportalytics.Feed.Persistence.PostgreSQL;
 
@@ -9,7 +11,9 @@ builder.Services
     .AddPresentation()
     .AddApplication()
     .AddPostgreSql(builder.Configuration)
-    .AddMongo(builder.Configuration);
+    .AddMongo(builder.Configuration)
+    .AddApiSportKafkaConsumer(builder.Configuration)
+    .AddApiSportsService(builder.Configuration);
 
 var app = builder.Build();
 app.ConfigureExceptionHandler();
@@ -21,5 +25,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.ConfigureHandfireDashboard();
 app.MapControllers();
 app.Run();

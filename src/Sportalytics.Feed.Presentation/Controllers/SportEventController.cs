@@ -3,12 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 using Sportalytics.Feed.Application.Commands;
 using Sportalytics.Feed.Application.DTOs;
 using Sportalytics.Feed.Application.Queries;
+using Sportalytics.Feed.Infrastructure.Interfaces;
 
 namespace Sportalytics.Feed.Presentation.Controllers;
 
 [Route("api/sport-events")]
 [ApiController]
-public sealed class SportEventController(ISender sender) : ControllerBase
+public sealed class SportEventController(ISender sender, IBackgroundApiSportService apiSportService) : ControllerBase
 {
     [HttpPost]
     public async Task<IActionResult> CreateSportEvent([FromBody] CreateSportEventDto createSportEventDto, CancellationToken cancellationToken)
@@ -50,6 +51,20 @@ public sealed class SportEventController(ISender sender) : ControllerBase
     {
         var command = new DeleteSportEventCommand(id);
         await sender.Send(command, cancellationToken);
+        return Ok();
+    }
+
+    [HttpGet("start-consume")]
+    public IActionResult StartConsume(CancellationToken cancellationToken)
+    {
+        apiSportService.Start();
+        return Ok();
+    }
+
+    [HttpGet("stop-consume")]
+    public IActionResult StopConsume(CancellationToken cancellationToken)
+    {
+        apiSportService.Stop();
         return Ok();
     }
 }

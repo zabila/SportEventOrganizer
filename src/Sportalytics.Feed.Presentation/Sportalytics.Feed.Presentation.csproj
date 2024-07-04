@@ -16,6 +16,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Sportalytics.Feed.Application\Sportalytics.Feed.Application.csproj"/>
+        <ProjectReference Include="..\Sportalytics.Feed.Infrastructure\Sportalytics.Feed.Infrastructure.csproj"/>
     </ItemGroup>
 
 </Project>
