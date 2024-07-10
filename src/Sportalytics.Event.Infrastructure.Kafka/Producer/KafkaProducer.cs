@@ -31,5 +31,6 @@ public class KafkaProducer<TKey, TValue>(ProducerConfig config) : IKafkaProducer
     {
         _producer.Flush();
         _producer.Dispose();
+        GC.SuppressFinalize(this);
     }
 }
