@@ -40,7 +40,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{4DBF5608
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventServiceTests", "EventServiceTests", "{AC78080A-7253-4C90-A199-5FB3BB5FF43E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Event.Test", "tests\EventServiceTest\Sportalytics.Event.Test.csproj", "{FBEC34AC-AF0A-455C-9759-CACB417799F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Feed.Test.Integration", "tests\EventServiceTest\Sportalytics.Feed.Test.Integration.csproj", "{FBEC34AC-AF0A-455C-9759-CACB417799F2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deployment", "deployment", "{C167BE35-3933-4562-9A4E-C5FEA5917FD3}"
+	ProjectSection(SolutionItems) = preProject
+		src\docker-compose.yml = src\docker-compose.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(ExtensibilityGlobals) = postSolution

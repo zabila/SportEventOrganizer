@@ -3,8 +3,6 @@ using Hangfire.PostgreSql;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Sportalytics.Feed.Infrastructure.Interfaces;
-using Sportalytics.Feed.Infrastructure.Kafka.Consumer;
-using Sportalytics.Feed.Infrastructure.Kafka.Interfaces;
 using Sportalytics.Feed.Infrastructure.Services.ApiSportsService;
 
 namespace Sportalytics.Feed.Infrastructure;

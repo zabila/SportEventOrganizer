@@ -6,6 +6,7 @@ using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 using MongoDB.Driver.Core.Configuration;
 using Sportalytics.Feed.Domain.Entities;
+using Sportalytics.Feed.Domain.Extensions;
 using Sportalytics.Feed.Domain.Interfaces;
 using Sportalytics.Feed.Persistence.MongoDB.Core;
 using Sportalytics.Feed.Persistence.MongoDB.Interfaces;
@@ -17,8 +18,8 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddMongo(this IServiceCollection services, IConfiguration configuration)
     {
-        BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
-        BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String));
+        if (BsonSerializer.LookupSerializer(typeof(Guid)) == null) BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
+        if (BsonSerializer.LookupSerializer(typeof(DateTimeOffset)) == null) BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String));
 
         var mongoDbSettings = new MongoDbSettings();
         configuration.GetSection(nameof(MongoDbSettings)).Bind(mongoDbSettings);
@@ -27,13 +28,13 @@ public static class DependencyInjection
         ArgumentNullException.ThrowIfNull(mongoDbSettings.Port);
         ArgumentNullException.ThrowIfNull(mongoDbSettings.DatabaseName);
 
-        services.AddSingleton(a => {
-
-            var settings = new MongoClientSettings()
+        services.AddSingleton(a =>
+        {
+            var settings = new MongoClientSettings
             {
                 Scheme = ConnectionStringScheme.MongoDB,
-                Server = new MongoServerAddress(mongoDbSettings.Host, mongoDbSettings.Port)
-
+                Server = new MongoServerAddress(mongoDbSettings.Host, mongoDbSettings.Port),
+                Credential = MongoCredential.CreateCredential("admin", mongoDbSettings.Username, mongoDbSettings.Password)
             };
             var mongoClient = new MongoClient(settings);
             return mongoClient.GetDatabase(mongoDbSettings.DatabaseName);
@@ -50,10 +51,7 @@ public static class DependencyInjection
 
     private static IServiceCollection AddMongoRepository<T>(this IServiceCollection services, string? collectionName) where T : IEntity
     {
-        ArgumentNullException.ThrowIfNull(collectionName);
-
-        services.AddSingleton<IRepository<T>>(a => new MongoRepository<T>(a.GetRequiredService<IMongoDatabase>(), collectionName));
+        services.AddSingleton<IRepository<T>>(a => new MongoRepository<T>(a.GetRequiredService<IMongoDatabase>(), collectionName.EnsureExists()));
         return services;
     }
-
 }
