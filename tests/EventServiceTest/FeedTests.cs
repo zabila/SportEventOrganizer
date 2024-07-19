@@ -30,8 +30,6 @@ public class FeedTests(IntegrationTestAppFactory factory) : BaseIntegrationTest(
         Assert.Equal(createSportEventDto.Location, sportEventResponse.Location);
         Assert.Equal(createSportEventDto.Date.ToString("d"), sportEventResponse.Date.ToString("d"));
 
-
-
         var data = await SportEventRepository.Query(e => e.Name == createSportEventDto.Name).ToListAsync();
         var sportEvent = data.FirstOrDefault().EnsureExists();
         Assert.NotNull(data);
