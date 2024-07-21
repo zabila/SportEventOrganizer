@@ -30,7 +30,7 @@ services:
     container_name: feed-api_container
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - MongoDB__ConnectionString=mongodb://admin:adminpassword@mongodb:27017
+      - MongoDB__ConnectionString=${MONGODB_CONNECTION_STRING}
       - POSTGRES__ConnectionString=Host=db;Port=5432;Username=postgres;Password=postgres;Database=postgres
     ports:
       - "5000:80"
