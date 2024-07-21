@@ -14,7 +14,7 @@ public class FeedTests(IntegrationTestAppFactory factory) : BaseIntegrationTest(
         // Arrange
         var createSportEventDto = new CreateSportEventDto
         {
-            Name = "Test Sport Event",
+            Name = "Test Create Sport Event",
             Location = "Test Location",
             Date = DateTime.UtcNow
         };
@@ -23,8 +23,9 @@ public class FeedTests(IntegrationTestAppFactory factory) : BaseIntegrationTest(
         var response = await Client.PostAsJsonAsync("api/sport-events", createSportEventDto);
 
         // Assert
-        Assert.True(response.IsSuccessStatusCode);
-        var sportEventResponse = await response.Content.ReadFromJsonAsync<CreateSportEventDto>().EnsureExists();
+        response.EnsureSuccessStatusCode();
+        var sportEventResponse = await response.Content.ReadFromJsonAsync<CreateSportEventDto>();
+        Assert.NotNull(sportEventResponse);
 
         Assert.Equal(createSportEventDto.Name, sportEventResponse.Name);
         Assert.Equal(createSportEventDto.Location, sportEventResponse.Location);
@@ -37,5 +38,109 @@ public class FeedTests(IntegrationTestAppFactory factory) : BaseIntegrationTest(
         Assert.Equal(sportEventResponse.Name, sportEvent.Name);
         Assert.Equal(sportEventResponse.Location, sportEvent.Location);
         Assert.Equal(sportEventResponse.Date.ToString("d"), sportEvent.Date.ToString("d"));
+    }
+
+    [Fact]
+    public async Task ShouldGetSportEvent()
+    {
+        // Arrange
+        var createSportEventDto = new CreateSportEventDto
+        {
+            Name = "Test Get Sport Event",
+            Location = "Test Location",
+            Date = DateTime.UtcNow
+        };
+        // Act
+        var createdSportEventResponse = await Client.PostAsJsonAsync("api/sport-events", createSportEventDto);
+        createdSportEventResponse.EnsureSuccessStatusCode();
+        var createdSportEvent = await createdSportEventResponse.Content.ReadFromJsonAsync<CreateSportEventDto>();
+        Assert.NotNull(createdSportEvent);
+
+        var data = await SportEventRepository.Query(e => e.Name == createSportEventDto.Name).ToListAsync();
+        var sportEvent = data.FirstOrDefault().EnsureExists();
+        Assert.NotNull(data);
+
+        var getSportEventResponse = await Client.GetAsync($"api/sport-events/{sportEvent.Id}");
+        getSportEventResponse.EnsureSuccessStatusCode();
+        var getSportEvent = await getSportEventResponse.Content.ReadFromJsonAsync<CreateSportEventDto>();
+        Assert.NotNull(getSportEvent);
+
+        // Assert
+        Assert.Equal(createSportEventDto.Name, createdSportEvent.Name);
+        Assert.Equal(createSportEventDto.Location, createdSportEvent.Location);
+        Assert.Equal(createSportEventDto.Date.ToString("d"), createdSportEvent.Date.ToString("d"));
+
+        Assert.Equal(getSportEvent.Name, sportEvent.Name);
+        Assert.Equal(getSportEvent.Location, sportEvent.Location);
+        Assert.Equal(getSportEvent.Date.ToString("d"), sportEvent.Date.ToString("d"));
+    }
+
+    [Fact]
+    public async Task ShouldUpdateSportEvent()
+    {
+        // Arrange
+        var createSportEventDto = new CreateSportEventDto
+        {
+            Name = "Test Update Sport Event",
+            Location = "Test Location",
+            Date = DateTime.UtcNow
+        };
+
+        var updateSportEventDto = new UpdateSpotEventDto
+        {
+            Name = "Updated Test Sport Event",
+            Location = "Updated Test Location",
+            Date = DateTime.UtcNow.AddDays(1)
+        };
+
+        // Act
+        var createdSportEventResponse = await Client.PostAsJsonAsync("api/sport-events", createSportEventDto);
+        createdSportEventResponse.EnsureSuccessStatusCode();
+        var createdSportEvent = await createdSportEventResponse.Content.ReadFromJsonAsync<CreateSportEventDto>();
+        Assert.NotNull(createdSportEvent);
+
+        var data = await SportEventRepository.Query(e => e.Name == createSportEventDto.Name).ToListAsync();
+        var sportEvent = data.FirstOrDefault().EnsureExists();
+        Assert.NotNull(data);
+
+        var updateSportEventResponse = await Client.PutAsJsonAsync($"api/sport-events/{sportEvent.Id}", updateSportEventDto);
+        updateSportEventResponse.EnsureSuccessStatusCode();
+
+        var updatedData = await SportEventRepository.Query(e => e.Name == updateSportEventDto.Name).ToListAsync();
+        var updatedSportEvent = updatedData.FirstOrDefault().EnsureExists();
+        Assert.NotNull(updatedData);
+
+        // Assert
+        Assert.Equal(updateSportEventDto.Name, updatedSportEvent.Name);
+        Assert.Equal(updateSportEventDto.Location, updatedSportEvent.Location);
+        Assert.Equal(updateSportEventDto.Date.ToString("d"), updatedSportEvent.Date.ToString("d"));
+    }
+
+    [Fact]
+    public async Task ShouldDeleteSportEvent()
+    {
+        // Arrange
+        var createSportEventDto = new CreateSportEventDto
+        {
+            Name = "Test Delete Sport Event",
+            Location = "Test Location",
+            Date = DateTime.UtcNow
+        };
+
+        // Act
+        var createdSportEventResponse = await Client.PostAsJsonAsync("api/sport-events", createSportEventDto);
+        createdSportEventResponse.EnsureSuccessStatusCode();
+        var createdSportEvent = await createdSportEventResponse.Content.ReadFromJsonAsync<CreateSportEventDto>();
+        Assert.NotNull(createdSportEvent);
+
+        var data = await SportEventRepository.Query(e => e.Name == createSportEventDto.Name).ToListAsync();
+        var sportEvent = data.FirstOrDefault().EnsureExists();
+        Assert.NotNull(data);
+
+        var deleteSportEventResponse = await Client.DeleteAsync($"api/sport-events/{sportEvent.Id}");
+        deleteSportEventResponse.EnsureSuccessStatusCode();
+
+        var deletedData = await SportEventRepository.Query(e => e.Name == createSportEventDto.Name).ToListAsync();
+        Assert.Empty(deletedData);
     }
 }
