@@ -34,7 +34,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Event.Presenta
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Event.Infrastructure.Kafka", "src\Sportalytics.Event.Infrastructure.Kafka\Sportalytics.Event.Infrastructure.Kafka.csproj", "{88464F68-883A-429B-B47B-2D011D9E1D5B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Feed.Infrastructure.Kafka", "src\Sportalytics.Feed.Infrastructure.Kafka\Sportalytics.Feed.Infrastructure.Kafka.csproj", "{8C1B9FA3-0AE5-4482-9D4C-FC5EB589EEE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Feed.Infrastructure.Kafka", "src\ Sportalytics.Feed.Infrastructure.Kafka\Sportalytics.Feed.Infrastructure.Kafka.csproj", "{8C1B9FA3-0AE5-4482-9D4C-FC5EB589EEE7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{4DBF5608-6244-4471-9028-584B98D76ED9}"
 EndProject
