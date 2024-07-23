@@ -2,39 +2,39 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34902.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Feed.Application", "D:\home\dotnet\SportEventOrganizer\src\Sportalytics.Feed.Application\Sportalytics.Feed.Application.csproj", "{DE4B8D90-6E1B-4F70-8AC9-B5412B89FFCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Feed.Application", "src\Sportalytics.Feed.Application\Sportalytics.Feed.Application.csproj", "{DE4B8D90-6E1B-4F70-8AC9-B5412B89FFCC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0983C466-2410-4C71-B517-2F7FA15E500F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Feed.Domain", "D:\home\dotnet\SportEventOrganizer\src\Sportalytics.Feed.Domain\Sportalytics.Feed.Domain.csproj", "{5E011F1C-B17E-4FC4-BE87-15D0E0D99409}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Feed.Domain", "src\Sportalytics.Feed.Domain\Sportalytics.Feed.Domain.csproj", "{5E011F1C-B17E-4FC4-BE87-15D0E0D99409}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Feed.Infrastructure", "D:\home\dotnet\SportEventOrganizer\src\Sportalytics.Feed.Infrastructure\Sportalytics.Feed.Infrastructure.csproj", "{65F4BBE8-E0EF-4FC6-83A2-BB98F751623A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Feed.Infrastructure", "src\Sportalytics.Feed.Infrastructure\Sportalytics.Feed.Infrastructure.csproj", "{65F4BBE8-E0EF-4FC6-83A2-BB98F751623A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Feed.API", "D:\home\dotnet\SportEventOrganizer\src\Sportalytics.Feed.API\Sportalytics.Feed.API.csproj", "{BA9E5EA2-EFA3-494F-8123-A9FECEA9894C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Feed.API", "src\Sportalytics.Feed.API\Sportalytics.Feed.API.csproj", "{BA9E5EA2-EFA3-494F-8123-A9FECEA9894C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Feed.Persistence.PostgreSQL", "D:\home\dotnet\SportEventOrganizer\src\Sportalytics.Feed.Persistence.PostgreSQL\Sportalytics.Feed.Persistence.PostgreSQL.csproj", "{D04D3FC3-4C02-49CE-A4D8-B75A22559F76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Feed.Persistence.PostgreSQL", "src\Sportalytics.Feed.Persistence.PostgreSQL\Sportalytics.Feed.Persistence.PostgreSQL.csproj", "{D04D3FC3-4C02-49CE-A4D8-B75A22559F76}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Feed.Presentation", "D:\home\dotnet\SportEventOrganizer\src\Sportalytics.Feed.Presentation\Sportalytics.Feed.Presentation.csproj", "{D33674CA-BFE2-4576-AF13-0D8250A2F1D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Feed.Presentation", "src\Sportalytics.Feed.Presentation\Sportalytics.Feed.Presentation.csproj", "{D33674CA-BFE2-4576-AF13-0D8250A2F1D9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FeedService", "FeedService", "{101B5D52-A3AB-4421-8B7F-3BEE09306027}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Feed.Persistence.MongoDB", "D:\home\dotnet\SportEventOrganizer\src\Sportalytics.Feed.Persistence.MongoDB\Sportalytics.Feed.Persistence.MongoDB.csproj", "{362F6920-259B-4FE5-8F07-164D07D9B221}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Feed.Persistence.MongoDB", "src\Sportalytics.Feed.Persistence.MongoDB\Sportalytics.Feed.Persistence.MongoDB.csproj", "{362F6920-259B-4FE5-8F07-164D07D9B221}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventService", "EventService", "{FE583965-74DC-4FF4-AA7E-EAB2159CCC4D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Event.API", "D:\home\dotnet\SportEventOrganizer\src\Sportalytics.Event.API\Sportalytics.Event.API.csproj", "{00677269-C039-4F10-84B7-95A0543926FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Event.API", "src\Sportalytics.Event.API\Sportalytics.Event.API.csproj", "{00677269-C039-4F10-84B7-95A0543926FB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Event.Application", "D:\home\dotnet\SportEventOrganizer\src\Sportalytics.Event.Application\Sportalytics.Event.Application.csproj", "{7675FAF6-A007-42DD-8E2A-D58AD96024CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Event.Application", "src\Sportalytics.Event.Application\Sportalytics.Event.Application.csproj", "{7675FAF6-A007-42DD-8E2A-D58AD96024CD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Event.Domain", "D:\home\dotnet\SportEventOrganizer\src\Sportalytics.Event.Domain\Sportalytics.Event.Domain.csproj", "{337203D9-0B73-4D71-B9F5-5FA1EAB41B70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Event.Domain", "src\Sportalytics.Event.Domain\Sportalytics.Event.Domain.csproj", "{337203D9-0B73-4D71-B9F5-5FA1EAB41B70}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Event.Infrastructure", "D:\home\dotnet\SportEventOrganizer\src\Sportalytics.Event.Infrastructure\Sportalytics.Event.Infrastructure.csproj", "{6D091DAF-D263-481E-9361-FADB3D75BB14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Event.Infrastructure", "src\Sportalytics.Event.Infrastructure\Sportalytics.Event.Infrastructure.csproj", "{6D091DAF-D263-481E-9361-FADB3D75BB14}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Event.Presentation", "D:\home\dotnet\SportEventOrganizer\src\Sportalytics.Event.Presentation\Sportalytics.Event.Presentation.csproj", "{2A74EBA7-A8B6-4B0E-BB3A-5EEA30B6468F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Event.Presentation", "src\Sportalytics.Event.Presentation\Sportalytics.Event.Presentation.csproj", "{2A74EBA7-A8B6-4B0E-BB3A-5EEA30B6468F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Event.Infrastructure.Kafka", "D:\home\dotnet\SportEventOrganizer\src\Sportalytics.Event.Infrastructure.Kafka\Sportalytics.Event.Infrastructure.Kafka.csproj", "{88464F68-883A-429B-B47B-2D011D9E1D5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Event.Infrastructure.Kafka", "src\Sportalytics.Event.Infrastructure.Kafka\Sportalytics.Event.Infrastructure.Kafka.csproj", "{88464F68-883A-429B-B47B-2D011D9E1D5B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Feed.Infrastructure.Kafka", "D:\home\dotnet\SportEventOrganizer\src\ Sportalytics.Feed.Infrastructure.Kafka\Sportalytics.Feed.Infrastructure.Kafka.csproj", "{8C1B9FA3-0AE5-4482-9D4C-FC5EB589EEE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportalytics.Feed.Infrastructure.Kafka", "src\Sportalytics.Feed.Infrastructure.Kafka\Sportalytics.Feed.Infrastructure.Kafka.csproj", "{8C1B9FA3-0AE5-4482-9D4C-FC5EB589EEE7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{4DBF5608-6244-4471-9028-584B98D76ED9}"
 EndProject
