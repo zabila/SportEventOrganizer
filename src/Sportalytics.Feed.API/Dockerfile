@@ -13,7 +13,7 @@ COPY ["src/Sportalytics.Feed.Domain/Sportalytics.Feed.Domain.csproj", "src/Sport
 COPY ["src/Sportalytics.Feed.Persistence.MongoDB/Sportalytics.Feed.Persistence.MongoDB.csproj", "src/Sportalytics.Feed.Persistence.MongoDB/"]
 COPY ["src/Sportalytics.Feed.Persistence.PostgreSQL/Sportalytics.Feed.Persistence.PostgreSQL.csproj", "src/Sportalytics.Feed.Persistence.PostgreSQL/"]
 COPY ["src/Sportalytics.Feed.Infrastructure/Sportalytics.Feed.Infrastructure.csproj", "src/Sportalytics.Feed.Infrastructure/"]
-COPY ["src/ Sportalytics.Feed.Infrastructure.Kafka/Sportalytics.Feed.Infrastructure.Kafka.csproj", "src/ Sportalytics.Feed.Infrastructure.Kafka/"]
+COPY ["src/Sportalytics.Feed.Infrastructure.Kafka/Sportalytics.Feed.Infrastructure.Kafka.csproj", "src/ Sportalytics.Feed.Infrastructure.Kafka/"]
 COPY ["src/Sportalytics.Feed.Presentation/Sportalytics.Feed.Presentation.csproj", "src/Sportalytics.Feed.Presentation/"]
 RUN dotnet restore "src/Sportalytics.Feed.API/Sportalytics.Feed.API.csproj"
 COPY . .
