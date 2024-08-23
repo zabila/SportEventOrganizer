@@ -1,7 +1,7 @@
-﻿using System.Net.Http.Json;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 using Sportalytics.Feed.Application.DTOs;
 using Sportalytics.Feed.Domain.Extensions;
+using System.Net.Http.Json;
 using Xunit;
 
 namespace Sportalytics.Feed.Test.Integration;

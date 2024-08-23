@@ -1,7 +1,6 @@
 ﻿using Hangfire;
 using Microsoft.Extensions.DependencyInjection;
 using Sportalytics.Feed.Infrastructure.Interfaces;
-using Sportalytics.Feed.Infrastructure.Kafka.Consumer;
 using Sportalytics.Feed.Infrastructure.Kafka.Interfaces;
 
 namespace Sportalytics.Feed.Infrastructure.Services.ApiSportsService;

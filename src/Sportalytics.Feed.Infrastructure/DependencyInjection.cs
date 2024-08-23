@@ -11,7 +11,8 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddApiSportsService(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddMediatR(config => {
+        services.AddMediatR(config =>
+        {
             config.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
         });
 

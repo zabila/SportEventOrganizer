@@ -1,5 +1,4 @@
 ﻿using Flurl.Http.Configuration;
-using Flurl.Http;
 using Hangfire;
 using Hangfire.PostgreSql;
 using Microsoft.Extensions.Configuration;
@@ -14,7 +13,8 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddApiSportsService(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddMediatR(config => {
+        services.AddMediatR(config =>
+        {
             config.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
         });
         services.Configure<ApiSportsServiceSettings>(configuration.GetSection(nameof(ApiSportsServiceSettings)));

@@ -17,11 +17,11 @@ public class KafkaApiSportsConsumer(ConsumerConfig config, ISender sender, IMapp
         {
             var consumeResult = Consumer.Consume(cancellationToken);
             Console.WriteLine($"Consumed id {consumeResult.Message.Key}, message '{consumeResult.Message.Value}' at: '{consumeResult.TopicPartitionOffset}'.");
-            
+
             var consumerResponseSportEventDto = JsonConvert.DeserializeObject<ConsumerResponseSportEventDto>(consumeResult.Message.Value).EnsureExists();
             var command = new CreateSportEventCommand(mapper.Map<CreateSportEventDto>(consumerResponseSportEventDto), cancellationToken);
             await sender.Send(command, cancellationToken);
-            
+
             Consumer.Commit(consumeResult);
         }
     }

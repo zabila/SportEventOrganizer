@@ -1,5 +1,4 @@
-﻿using System.Net.NetworkInformation;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Sportalytics.Feed.Domain.Entities;
 

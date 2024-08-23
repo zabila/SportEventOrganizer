@@ -11,7 +11,7 @@ public static class DependencyInjection
     public static IServiceCollection AddApiSportKafkaConsumer(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-        
+
         var consumerConfig = new ConsumerConfig()
         {
             BootstrapServers = configuration["Kafka:BootstrapServers"],

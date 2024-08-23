@@ -1,8 +1,7 @@
-﻿using System.Linq.Expressions;
-using MongoDB.Driver;
-using MongoDB.Driver.Linq;
+﻿using MongoDB.Driver;
 using Sportalytics.Feed.Domain.Interfaces;
 using Sportalytics.Feed.Persistence.MongoDB.Interfaces;
+using System.Linq.Expressions;
 
 namespace Sportalytics.Feed.Persistence.MongoDB.Core;
 

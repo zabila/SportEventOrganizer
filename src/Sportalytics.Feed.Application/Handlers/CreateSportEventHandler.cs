@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
-using Sportalytics.Feed.Domain.Entities;
 using Sportalytics.Feed.Application.Commands;
+using Sportalytics.Feed.Domain.Entities;
 using Sportalytics.Feed.Persistence.MongoDB.Interfaces;
 
 namespace Sportalytics.Feed.Application.Handlers;

@@ -2,4 +2,4 @@
 
 namespace Sportalytics.Feed.Application.DTOs;
 
-public record CreateSportEventDto: SportEventDtoBase;
+public record CreateSportEventDto : SportEventDtoBase;
