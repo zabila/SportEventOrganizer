@@ -29,8 +29,19 @@
         <ProjectReference Include="..\Sportalytics.Feed.Infrastructure\Sportalytics.Feed.Infrastructure.csproj"/>
         <ProjectReference Include="..\Sportalytics.Feed.Persistence.MongoDB\Sportalytics.Feed.Persistence.MongoDB.csproj"/>
         <ProjectReference Include="..\Sportalytics.Feed.Persistence.PostgreSQL\Sportalytics.Feed.Persistence.PostgreSQL.csproj"/>
-        <ProjectReference Include="..\Sportalytics.Feed.Persistence.PostgreSQL\Sportalytics.Feed.Persistence.PostgreSQL.csproj" />
+        <ProjectReference Include="..\Sportalytics.Feed.Persistence.PostgreSQL\Sportalytics.Feed.Persistence.PostgreSQL.csproj"/>
         <ProjectReference Include="..\Sportalytics.Feed.Presentation\Sportalytics.Feed.Presentation.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <InternalVisibleTo Include="..\..\tests\Sportalytics.Feed.Application.Tests"/>
+    </ItemGroup>
+
+
+    <ItemGroup>
+        <Content Include="..\..\.dockerignore">
+            <Link>.dockerignore</Link>
+        </Content>
     </ItemGroup>
 
 </Project>

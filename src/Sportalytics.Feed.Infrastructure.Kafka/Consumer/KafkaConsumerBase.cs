@@ -1,5 +1,4 @@
 ﻿using Confluent.Kafka;
-using MediatR;
 using Sportalytics.Feed.Infrastructure.Kafka.Interfaces;
 
 namespace Sportalytics.Feed.Infrastructure.Kafka.Consumer;

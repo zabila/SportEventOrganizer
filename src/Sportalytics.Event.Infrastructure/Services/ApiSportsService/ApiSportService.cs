@@ -1,6 +1,4 @@
-﻿using System.Net.Http.Headers;
-using System.Text.Json;
-using Flurl.Http;
+﻿using Flurl.Http;
 using Flurl.Http.Configuration;
 using MediatR;
 using Microsoft.Extensions.Options;
@@ -11,6 +9,7 @@ using Sportalytics.Event.Domain.Entities.ApiSports;
 using Sportalytics.Event.Domain.Exceptions;
 using Sportalytics.Event.Domain.Extensions;
 using Sportalytics.Event.Infrastructure.Interfaces;
+using System.Text.Json;
 
 namespace Sportalytics.Event.Infrastructure.Services.ApiSportsService;
 

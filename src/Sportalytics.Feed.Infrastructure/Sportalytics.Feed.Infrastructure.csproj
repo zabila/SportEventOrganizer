@@ -14,7 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\ Sportalytics.Feed.Infrastructure.Kafka\Sportalytics.Feed.Infrastructure.Kafka.csproj"/>
+        <ProjectReference Include="..\Sportalytics.Feed.Infrastructure.Kafka\Sportalytics.Feed.Infrastructure.Kafka.csproj"/>
     </ItemGroup>
 
 </Project>

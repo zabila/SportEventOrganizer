@@ -7,7 +7,7 @@ public static class ServiceExtensions
         var presentationAssembly = typeof(Presentation.AssemblyReference).Assembly;
         services.AddControllers()
             .AddApplicationPart(presentationAssembly);
-        
+
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
 

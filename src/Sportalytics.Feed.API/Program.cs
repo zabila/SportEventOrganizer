@@ -28,3 +28,7 @@ app.UseHttpsRedirection();
 app.ConfigureHandfireDashboard();
 app.MapControllers();
 app.Run();
+
+public partial class Program
+{
+}
